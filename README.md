@@ -1,5 +1,5 @@
 
-<img align="center" src="website/public/assets/imgs/logo.png"> <br>
+<img align="center" src="website/public/assets/imgs/logo.png" width="200"> <br>
 
 
 
@@ -14,7 +14,7 @@
   <p align=center>
 
 <strong>🔧 Tecnologias Utilizadas:</strong><br>
-<img src="https://logos-world.net/wp-content/uploads/2023/02/JavaScript-Logo.png" width="30"> JavaScript<br><br>
+<img src="https://logos-world.net/wp-content/uploads/2023/02/JavaScript-Logo.png" width="40"> JavaScript<br><br>
 <img src="https://static.vecteezy.com/system/resources/previews/027/127/463/non_2x/javascript-logo-javascript-icon-transparent-free-png.png" width="30"> HTML<br><br>
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" width="30"> CSS<br><br>
 <img src="https://logospng.org/download/mysql/mysql-4096.png" width="40"> Banco de Dados SQL<br><br>
