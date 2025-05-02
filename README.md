@@ -1,5 +1,5 @@
 
-<img align="center" src="assets/imgs/logo"> <br>
+<img align="center" src="assets/imgs/logo.png"> <br>
 
 
 
@@ -7,7 +7,7 @@
   <strong> Projeto Individual SPTech - Sants Volleyball </strong>
 </div>
 
-<div align="center">
+<div align="justify">
   <p>Este repositório contém um website sobre vôlei focado em disseminar o conhecimento sobre o esporte e fazer com que mais pessoas conheçam os benefícios da prática do vôlei, podendo obter dicas de como melhorar os principais fundamentos do esporte e com um sistema de favoritamento para poder receber informações sobre seus jogadores e clubes preferidos de vôleibol.</p>
 
   
@@ -21,7 +21,7 @@
 <img src="Site/assets/imgs/iconNodeJs.png" width="30"> NODE<br><br>
 
 
-<strong>📊 Funcionalidades:</strong>
+<strong align=center>📊 Funcionalidades:</strong>
 
 - Análise de dados dos usuários (ex: posição do vôlei preferida)
 - Sistema de favoritamento de jogadores e clubes
