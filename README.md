@@ -1,14 +1,14 @@
 
-<img align="center" src="Site/assets/imgs/logo-seedtech.svg"> <br>
+<img align="center" src="assets/imgs/logo"> <br>
 
 
 
 <div align="center">
-  <strong>🌱 Projeto de Monitoramento de Cultivo de Café ☕️</strong>
+  <strong> Projeto Individual SPTech - Sants Volleyball </strong>
 </div>
 
 <div align="center">
-  <p>Este repositório contém um sistema de monitoramento para viveiros de café, focado na otimização do crescimento das plantas através da análise de dados de CO₂ e outras variáveis ambientais. O objetivo é fornecer uma solução eficiente para agricultores, melhorando a qualidade e a produtividade do cultivo.☕️</p>
+  <p>Este repositório contém um website sobre vôlei focado em disseminar o conhecimento sobre o esporte e fazer com que mais pessoas conheçam os benefícios da prática do vôlei, podendo obter dicas de como melhorar os principais fundamentos do esporte e com um sistema de favoritamento para poder receber informações sobre seus jogadores e clubes preferidos de vôleibol.</p>
 
   
   <p align=center>
@@ -18,16 +18,14 @@
 <img src="Site/assets/imgs/iconHTML.png" width="30"> HTML<br><br>
 <img src="Site/assets/imgs/iconCSS.png" width="30"> CSS<br><br>
 <img src="Site/assets/imgs/iconMysql.png" width="30"> Banco de Dados SQL<br><br>
-<img src="Site/assets/imgs/iconArduino.png" width="30"> Arduino UNO R3<br><br>
 <img src="Site/assets/imgs/iconNodeJs.png" width="30"> NODE<br><br>
-<img src="Site/assets/imgs/iconC++.png" width="30"> C++
 
 
 <strong>📊 Funcionalidades:</strong>
 
-- Monitoramento em tempo real
-- Análise de dados históricos
-- Alertas de condições ambientais
+- Análise de dados dos usuários (ex: posição do vôlei preferida)
+- Sistema de favoritamento de jogadores e clubes
+- Quiz de conhecimentos gerais sobre vôlei e preferências no esporte
 </p>
   
 </div>
@@ -36,7 +34,7 @@
 
 ## 🔭 Visão Geral
 
-Este projeto tem como objetivo o desenvolvimento de um sistema web integrado com sensores de CO₂ (MQ2) para monitoramento da qualidade do ar em ambientes controlados, como viveiros. A solução inclui o desenvolvimento completo do site, integração com hardware (Arduino UNO R3) e leitura em tempo real dos níveis de CO₂ (PPM).
+Este projeto tem como objetivo o desenvolvimento de um sistema web para cadastro de usuários e exibição de informações sobre vôlei personalizadas dependendo das respostas do usuário em um sistema de quiz, onde será possível observar o conhecimento dos usuários sobre o esporte.
 <br>
  <h1>🔧 Tecnologias:</h1>
 <br>
@@ -68,27 +66,3 @@ Ideal para criar APIs, servidores e apps em tempo real.
 Armazena e gerencia dados de forma estruturada.
 
 Usado com MySQL, PostgreSQL, SQLite, entre outros.
-
-<br>
-🧠 C++
-Linguagem de programação poderosa e rápida.
-
-Usada em sistemas embarcados, jogos e aplicações de alto desempenho.
-<br>
-
-<br>
-<h1>⚡ Tecnologias de Hardware e Sensoriamento</h1>
-
-<br>
-🧩 Arduino UNO R3
-Placa de prototipagem com microcontrolador.
-
-Usada para controlar sensores, LEDs, motores, etc.
-
-<br>
-🌫️ Sensor de Gás MQ2
-Detecta gases como CO₂, fumaça, propano, metano.
-
-Muito usado para medir qualidade do ar e segurança.
-
-</div>
