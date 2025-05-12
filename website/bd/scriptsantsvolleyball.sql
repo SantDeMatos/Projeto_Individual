@@ -81,7 +81,9 @@ constraint pkallcl primary key (idfavoritar_clube, fkclube, fkusuario)
 
 );
 
+alter table quiz add column nota int;
 
+describe quiz;
 
 
 
