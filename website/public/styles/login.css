@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+        overflow:hidden;
+        display: flex;
+}
+
+
+.div_img_login{
+
+    width: 38%;
+    height: 720px;
+    background-repeat: no-repeat;
+    background-image: url(../assets/imgs/login.png);
+
+}
+
+.div_form{
+
+    width: 62%;
+    height: 720px;
+    display: flex;
+    flex-direction: column;
+}
+
+.txt_bem_vindo{
+
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    margin-top: 6%;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 5%;
+}
+
+.span_bem_vindo{
+
+    font-family: "Kantumruy Pro", sans-serif;
+    color: #B2892B;
+    font-weight: bold;
+    font-size: 35px;
+
+}
+
+.span_logo{
+
+    font-family: "Kantumruy Pro", sans-serif;
+    color: #B2892B;
+    font-weight:700;
+    font-size: 40px;
+    margin-left: 2%;
+
+}
+
+.span_txt_form{
+
+    font-family: "Kantumruy Pro", sans-serif;
+    color: #1A2435;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+.span_txt_form_2{
+
+    font-family: "Kantumruy Pro", sans-serif;
+    color: #1A2435;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 7%;
+}
+
+#input_email{
+
+    width: 90%;
+    margin-top: 2%;
+    height: 6vh;
+    outline: none;
+    border-radius: 8px;
+    border: 2px solid #1A2435;
+    text-align: center;
+    font-family: "Kantumruy Pro", sans-serif;
+    color: #1A2435;
+    background-color: transparent;
+    font-weight: 600;
+    margin-bottom: 4%;
+
+}
+
+.div_form_campos{
+
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    width: 407px;
+    height:75vh;
+
+}
