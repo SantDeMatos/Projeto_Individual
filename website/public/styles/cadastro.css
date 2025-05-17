@@ -19,22 +19,23 @@ body{
 
 .div_img_login{
 
-    width: 38%;
-    height: 720px;
+    width: 40%;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url(../assets/imgs/login.png);
+    height: 720px;
+    background-image: url(../assets/imgs/img_cad.jpg);
 
 }
 
 .btn_voltar{
 
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: #B2892B;
     border: none;
-    margin-top: 5%;
-    margin-left: 5%;
+    margin-top: 2%;
+    margin-left: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,7 +52,7 @@ body{
 
 .div_form{
 
-    width: 62%;
+    width: 60%;
     height: 720px;
     display: flex;
     flex-direction: column;
@@ -63,12 +64,11 @@ body{
 .txt_bem_vindo{
 
     width: 80%;
-    height: 10vh;
+    height: 7vh;
     display: flex;
-    margin-top: 6%;
     flex-direction: row;
     align-items: center;
-    margin-left: 5%;
+    margin-left: 8%;
 }
 
 .span_bem_vindo{
@@ -76,7 +76,7 @@ body{
     font-family: "Kantumruy Pro", sans-serif;
     color: #B2892B;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 32px;
 
 }
 
@@ -85,7 +85,7 @@ body{
     font-family: "Kantumruy Pro", sans-serif;
     color: #B2892B;
     font-weight:700;
-    font-size: 40px;
+    font-size: 35px;
     margin-left: 2%;
 
 }
@@ -94,17 +94,16 @@ body{
 
     font-family: "Kantumruy Pro", sans-serif;
     color: #1A2435;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-    margin-left: 5%;
-    margin-top: 1%;
+    margin-left: 8%;
 }
 
 .span_txt_form_2{
 
     font-family: "Kantumruy Pro", sans-serif;
     color: #1A2435;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     margin-top: 7%;
 }
@@ -113,7 +112,7 @@ body{
 
     width: 90%;
     margin-top: 2%;
-    height: 6vh;
+    height: 5vh;
     outline: none;
     border-radius: 8px;
     border: 2px solid #1A2435;
@@ -122,7 +121,6 @@ body{
     color: #1A2435;
     background-color: transparent;
     font-weight: 600;
-    margin-bottom: 4%;
 
 }
 
@@ -130,9 +128,9 @@ body{
 
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
+    margin-left: 8%;
     width: 407px;
-    height:75vh;
+    height:80vh;
 
 }
 
@@ -153,7 +151,7 @@ body{
 
 .txt_cad{
 
-    font-size: 15px;
+    font-size: 13px;
     color: #1A2435;
     font-family: "Kantumruy Pro", sans-serif;
     font-weight: bold;
@@ -169,7 +167,7 @@ body{
 
 }
 
-.btn_login{
+.btn_cad{
 
     background-color: #1A2435;
     color: white;

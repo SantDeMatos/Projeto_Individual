@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../styles/login.css">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../styles/cadastro.css">
     <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
 </head>
 <body>
 
-    <div class="div_img_login">
-
-        <button class="btn_voltar" onclick="voltar()"><img src="../assets/icons/seta_esquerda.svg" class="img_btn"></button>
-
-    </div>
-
+   
     <div class="div_form">
+
+
+     <button class="btn_voltar" onclick="voltar()"><img src="../assets/icons/seta_esquerda.svg" class="img_btn"></button>
+
 
         <div class="txt_bem_vindo">
 
@@ -24,18 +23,26 @@
 
         </div>
 
-        <span class="span_txt_form">Realize o login em sua conta</span>
+        <span class="span_txt_form">Cadastre-se para obter mais dicas!</span>
 
         <div class="div_form_campos">
 
             
-        <span class="span_txt_form_2">Email</span>
+        <span class="span_txt_form_2">Nome</span>
+
+        <input type="text" id="input_nome" class="input">
+
+          <span class="span_txt_form_2">Email</span>
 
         <input type="text" id="input_email" class="input">
 
-          <span class="span_txt_form_2">Senha</span>
+         <span class="span_txt_form_2">Senha</span>
 
         <input type="password" id="input_senha" class="input">
+
+         <span class="span_txt_form_2">Telefone</span>
+
+        <input type="text" id="input_telefone" class="input">
 
 
         <div class="div_verificacoes">
@@ -44,15 +51,26 @@
 
         </div>
 
-         <span class="txt_cad">Ainda não tem uma conta? <a class="link_cad" href="cadastro.html">Cadastre-se</a> </span>
 
-         <button onclick="login()" class="btn_login">Login</button>
+         <button onclick="cadastrat()" class="btn_cad">Cadastrar</button>
+
+                  <span class="txt_cad">Já tem uma conta? <a class="link_cad" href="login.html">Realize o Login</a> </span>
+
 
         </div>
 
      
       
     </div>
+
+     <div class="div_img_login">
+
+
+    </div>
+
+
+
+
     
 </body>
 </html>
