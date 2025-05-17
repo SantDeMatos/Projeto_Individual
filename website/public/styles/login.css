@@ -14,6 +14,8 @@ html {
 body{
         overflow:hidden;
         display: flex;
+        align-items: center;
+        justify-content: center;
 }
 
 
@@ -190,3 +192,18 @@ body{
     transition: 0.5s;
 }
 
+.div_aviso{
+
+    width: 400px;
+    height: 300px;
+    background-color: #1A2435;
+    border: solid 2px white;
+    position: fixed;
+    border-radius: 10px;
+    display: flex;
+    color: white;
+    font-family: "Kantumruy Pro", sans-serif;
+    align-items: center;
+    justify-content: center;
+
+}

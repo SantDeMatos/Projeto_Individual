@@ -24,29 +24,25 @@
 
         </div>
 
-        <span class="span_txt_form">Realize o login em sua conta</span>
+        <span class="span_txt_form">Realize o login em sua conta!</span>
 
         <div class="div_form_campos">
 
             
         <span class="span_txt_form_2">Email</span>
 
-        <input type="text" id="input_email" class="input">
+        <input type="text" id="input_email" class="input" placeholder="Ex: sants@volley.com" >
 
           <span class="span_txt_form_2">Senha</span>
 
-        <input type="password" id="input_senha" class="input">
+        <input type="password" id="input_senha" class="input" placeholder="Ex: S#tvolley" >
 
+         <button onclick="login()" id="btn_log" class="btn_login">Login</button>
 
-        <div class="div_verificacoes">
-
-              <span class="txt_span_ver">Contém pelo menos 9 caractéres  <br> Contém pelo menos um caractére especial <br> Contém pelo menos um caractére maiúsculo </span>
-
-        </div>
 
          <span class="txt_cad">Ainda não tem uma conta? <a class="link_cad" href="cadastro.html">Cadastre-se</a> </span>
 
-         <button onclick="login()" class="btn_login">Login</button>
+        
 
         </div>
 
@@ -54,15 +50,47 @@
       
     </div>
     
+    <div class="div_aviso"  id='div_aviso' style="display: none;"></div>
 </body>
 </html>
 
 <script>
 
+const comp = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 function voltar(){
 
     window.location.href = '../index.html';
 }
+
+   
+function login(){
+
+    if(input_email.value == '' || input_senha.value == ''){
+
+         alert('Preencha todos os campos para continuar'); 
+
+    }else{
+
+        var email = input_email.value;
+        var senha = input_senha.value;
+
+        if( email.includes('@') && senha.length >= 9){
+
+            
+
+        }else{
+
+            alert('Email ou senha no formato errado! O email deve conter @ e a senha deve conter no mínimo 9 caractéres!')
+            
+        }
+
+
+    }
+
+}
+
+
+
 
 </script>

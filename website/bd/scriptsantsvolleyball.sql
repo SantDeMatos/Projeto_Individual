@@ -6,6 +6,8 @@ create database santsvolley;
 
 use santsvolley;
 
+alter table usuario modify column nome varchar(155) not null;
+
 create table usuario(
 
 idusuario int primary key auto_increment,
@@ -82,6 +84,8 @@ constraint pkallcl primary key (idfavoritar_clube, fkclube, fkusuario)
 );
 
 alter table quiz add column nota int;
+
+
 
 describe quiz;
 

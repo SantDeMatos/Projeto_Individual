@@ -30,29 +30,23 @@
             
         <span class="span_txt_form_2">Nome</span>
 
-        <input type="text" id="input_nome" class="input">
+        <input type="text" id="input_nome" class="input" placeholder="Sants Volley">
 
           <span class="span_txt_form_2">Email</span>
 
-        <input type="text" id="input_email" class="input">
+        <input type="text" id="input_email" class="input" placeholder="sants@volley">
 
          <span class="span_txt_form_2">Senha</span>
 
-        <input type="password" id="input_senha" class="input">
+        <input type="password" id="input_senha" class="input" placeholder="senha124#"  >
 
          <span class="span_txt_form_2">Telefone</span>
 
-        <input type="text" id="input_telefone" class="input">
+        <input type="text" id="input_telefone" class="input" placeholder="12345-4567" maxlength="10">
 
 
-        <div class="div_verificacoes">
 
-              <span class="txt_span_ver">Contém pelo menos 9 caractéres  <br> Contém pelo menos um caractére especial <br> Contém pelo menos um caractére maiúsculo </span>
-
-        </div>
-
-
-         <button onclick="cadastrat()" class="btn_cad">Cadastrar</button>
+         <button onclick="cadastrar()" class="btn_cad">Cadastrar</button>
 
                   <span class="txt_cad">Já tem uma conta? <a class="link_cad" href="login.html">Realize o Login</a> </span>
 
@@ -81,6 +75,34 @@
 function voltar(){
 
     window.location.href = '../index.html';
+}
+
+function cadastrar(){
+
+
+       if(input_email.value == '' || input_senha.value == '' || input_nome.value == '' || input_telefone.value == ''){
+
+         alert('Preencha todos os campos para continuar'); 
+
+    }else{
+
+        var email = input_email.value;
+        var senha = input_senha.value;
+        var nome = input_nome.value;
+        var telefone = input_telefone.value;
+
+        if( email.includes('@') && senha.length >= 9 && telefone.length == 10){
+
+
+        }else{
+
+            alert('Email, senha ou número no formato errado! O email deve conter @, a senha deve conter no mínimo 9 caractéres e o número deve conter 10 caractéres incluindo -')
+            
+        }
+
+
+    }
+
 }
 
 </script>

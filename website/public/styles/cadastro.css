@@ -182,7 +182,7 @@ body{
     cursor: pointer;
 }
 
-.btn_login:hover{
+.btn_cad:hover{
 
     color: #B2892B;
     transition: 0.5s;
