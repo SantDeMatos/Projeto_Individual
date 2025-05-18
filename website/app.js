@@ -16,11 +16,7 @@ var HOST_APP = process.env.APP_HOST;
 var app = express();
 
 var usuarioRouter = require("./src/routes/usuarios");
-var viveiroRouter = require("./src/routes/viveiros");
-var alertaRouter = require("./src/routes/alerta");
-var historicoRouter = require("./src/routes/historico");
-var sensoresRouter  = require("./src/routes/sensores");
-var graficosRouter = require ("./src/routes/graficos");
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -29,11 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 app.use("/usuarios", usuarioRouter);
-app.use("/historico", historicoRouter);
-app.use("/viveiros", viveiroRouter);
-app.use("/alerta", alertaRouter);
-app.use("/sensores", sensoresRouter);
-app.use("/graficos", graficosRouter);
+
 
 app.listen(PORTA_APP, function () {
     console.log(`

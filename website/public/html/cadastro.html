@@ -6,6 +6,7 @@
     <title>Cadastro</title>
     <link rel="stylesheet" href="../styles/cadastro.css">
     <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
+    <script src="../js/cadastro.js"></script>
 </head>
 <body>
 
@@ -92,6 +93,40 @@ function cadastrar(){
         var telefone = input_telefone.value;
 
         if( email.includes('@') && senha.length >= 9 && telefone.length == 10){
+
+            fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          emailServer: email,
+          senhaServer: senha,
+          nomeServer: nome,
+          telefoneServer: telefone
+      }),
+  })
+      .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+
+              setTimeout(() => {
+                  window.location = "login.html";
+              }, "1000");
+
+          } else {
+              throw new Error ("Erro no cadastro!");
+          }
+      })
+      .catch(function (erro) {
+          console.error(`#ERRO: ${erro}`);
+        
+      });
+
+  return false;
 
 
         }else{
