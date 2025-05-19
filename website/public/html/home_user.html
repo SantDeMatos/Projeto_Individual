@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/home_user.css">
+    <title>Home</title>
+</head>
+<body>
+
+    <div class="menu_bar">
+
+        <div class="div_logo"></div>
+
+        <nav class="nav_menu_links">
+
+            <button class="btn_home" style="background-color: #B2892B;" onclick="home()"><img src="../assets/icons/home.svg" class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="quiz()"><img src="../assets/icons/quiz.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="favoritar()"><img src="../assets/icons/estrela.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="perfil()"><img src="../assets/icons/perfil.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="sair()"><img src="../assets/icons/sair.png"  class="img_menu"></button>
+
+
+        </nav>
+
+    </div>
+    
+    <div class="div_container">
+
+        <div class="fav_text">  
+            <span class="span_favoritos">FAVORITOS</span>
+        </div>
+
+       <div class="dicas_text">  
+            <span class="span_dicas">DICAS</span>
+        </div>
+      
+        <div class="div_favoritos">  </div>
+
+     
+
+           <div class="div_dicas">
+
+            <div class="div_posicao">
+
+                <div class="titulo_pos"> <span>POSIÇÃO</span></div>
+
+            </div>
+
+              <div class="div_content_rot">
+
+                <div class="div_rotacao">
+
+                    <div class="titulo_rot"><span>ROTAÇÃO</span></div>
+
+
+                </div>
+
+                 <div class="div_fund">
+
+                         <div class="titulo_fund"> <span>FUNDAMENTOS ESSENCIAIS</span></div>
+
+                    
+                </div>
+
+
+              </div>
+
+           </div>
+
+           </div>
+
+    </div>
+
+</body>
+</html>
+
+<script>
+
+
+function sair(){
+
+        sessionStorage.clear();
+        window.location = '../index.html'
+
+}
+
+
+</script>

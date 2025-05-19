@@ -103,10 +103,27 @@ function login(){
                 sessionStorage.SENHA_USUARIO = json.senha;
                 sessionStorage.CARGO_USUARIO = json.cargo;
 
-                window.location = "entrou.html";
+                if( json.cargo == 'Normal'){
+
+                    window.location = "home_user.html";
+  
+                }else{
+
+                       window.location = "home_gen.html";
+
+                }
+
             });
 
-            window.location = "entrou.html"
+             if( json.cargo == 'Normal'){
+
+                    window.location = "home_user.html";
+  
+                }else{
+
+                       window.location = "home_gen.html";
+
+                }
 
         } else {
 
