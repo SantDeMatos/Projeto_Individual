@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/perfil.css">
+    <title>Perfil</title>
+</head>
+<body>
+    
+    
+    
+    <div class="menu_bar">
+
+        <div class="div_logo"></div>
+
+        <nav class="nav_menu_links">
+
+            <button class="btn_home" onclick="home()"><img src="../assets/icons/home.svg" class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="quiz()"><img src="../assets/icons/quiz.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="favoritar()"><img src="../assets/icons/estrela.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home"  style="background-color: #B2892B;" onclick="perfil()"><img src="../assets/icons/perfil.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="sair()"><img src="../assets/icons/sair.png"  class="img_menu"></button>
+
+
+        </nav>
+
+    </div>
+
+
+    <div class="div_container">
+
+        <div class="div_perfil">
+
+            <span class="span_titulo_perfil">PERFIL</span>
+
+
+        </div>
+
+
+    </div>
+</body>
+</html>
+
+
+<script>
+
+
+function sair(){
+
+        sessionStorage.clear();
+        window.location = '../index.html'
+
+}
+
+function home(){
+
+    window.location = 'home_user.html'
+}
+
+
+function favoritar(){
+
+    window.location = 'favoritos.html'
+
+}
+
+
+function perfil(){
+
+    window.location = 'perfil.html'
+}
+
+</script>

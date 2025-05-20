@@ -116,9 +116,10 @@ body{
 
     display: flex;
     flex-direction: row;
+    align-items: center;
     overflow-x: auto;
     width: 90%;
-    height: 22vh;
+    height: 24vh;
     margin-top: 1%;
     border-radius: 10px;
     border: solid 5px #B2892B;
@@ -164,7 +165,7 @@ body{
       justify-content: center;
       align-self: flex-start;
       margin-left: 6%;
-      margin-top: 13%;
+      margin-top: 14%;
 
 }
 
@@ -328,3 +329,39 @@ body{
 }
 
 
+.div_card{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #1A2435;
+    min-width: 10%;
+    max-width: 10%;
+    margin-top: 1%;
+    min-height: 20vh;
+    max-height: 20vh;
+    border-radius: 8px;
+    margin-left: 4%;
+
+}
+
+
+.div_img_card{
+
+    width: 80%;
+    height: 14vh;
+    background-image: url(../assets/imgs/pesquisa_jogador.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.span_texto_card{
+
+    color: white;
+    font-family: "Kantumruy Pro", sans-serif;
+    font-size: 10px;
+    text-align: center;
+    font-weight: bold;
+
+}
