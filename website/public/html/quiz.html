@@ -60,7 +60,13 @@
     </div>
 
 
-    <div class="div_resultado" id="div_resultado"></div>
+    </div>
+
+      <div class="div_resultado" id="div_resultado" style="display: none;">
+
+   
+
+      </div>
 
 </body>
 </html>
@@ -69,6 +75,9 @@
 <script>
 
 var i = 0;
+var acertos = 0;
+const lista_respostas_certas = ['c','c','c', 'd','c', 'd', 'b', 'd', 'b', 'b'];
+
 var questoes = [{
 
     pergunta: '1- Qual a quantidade  de medalhas de ouro que o Brasil tem no vôlei?',
@@ -165,9 +174,9 @@ var questoes = [{
 
      pergunta: '9-  O que são os sinais do levantador?',
     alternativaA: 'a) Mostra para os adversários quantos pontos estão afrente',
-     alternativaB: 'b) Indica qual jogador está com mais pontos',
+     alternativaB: 'b) Indica aos outros jogadores qual jogada será feita',
       alternativaC: 'c) Indica somente a velocidade do levantamento',
-       alternativaD: 'd) Indica aos outros jogadores qual jogada será feita'
+       alternativaD: 'd)Indica qual jogador está com mais pontos'
     
 
 },
@@ -201,7 +210,6 @@ var questoes = [{
 
 
 
-var lista_respostas_certas = [];
 
 var lista_usuario = [];
 
@@ -245,11 +253,11 @@ function comecar(){
         div_perguntas.innerHTML = `
             <span class="span_pergunta"> ${questoes[i].pergunta}</span>
 
-                <button class="btn_opc" id="a" onclick="resposta(this)">${questoes[i].alternativaA}</button>
-                <button class="btn_opc"  id="b" onclick="resposta(this)">${questoes[i].alternativaB}</button>
-                <button class="btn_opc" id="c" onclick="resposta(this)">${questoes[i].alternativaC}</button>
-                <button class="btn_opc" id="d" onclick="resposta(this)">${questoes[i].alternativaD}</button>
-                 <button class="btn_opc" id="e" onclick="resposta(this)">${questoes[i].alternativaE}</button>
+                <button class="btn_opc" id="Oposto" onclick="resposta(this)">${questoes[i].alternativaA}</button>
+                <button class="btn_opc"  id="Ponteiro" onclick="resposta(this)">${questoes[i].alternativaB}</button>
+                <button class="btn_opc" id="Levantador" onclick="resposta(this)">${questoes[i].alternativaC}</button>
+                <button class="btn_opc" id="Líbero" onclick="resposta(this)">${questoes[i].alternativaD}</button>
+                 <button class="btn_opc" id="Central" onclick="resposta(this)">${questoes[i].alternativaE}</button>
             `;
 
 
@@ -278,12 +286,54 @@ function comecar(){
 function resposta(botao){
 
     var resposta = botao.id;
+    
     lista_usuario.push(resposta);
     i++;
 
     if( i == 11){
-
         
+        for(var c = 0; c < lista_respostas_certas.length; c++){
+
+            if(lista_usuario[c] == lista_respostas_certas[c]){
+
+                acertos++;
+
+
+            }
+        }
+
+        div_resultado.innerHTML = `<h1 class="h1_res">RESULTADO</h1>
+
+        <span id="acertos">${acertos}/10</span>
+        <span class="span_acert"> acertos</span>
+
+        <span>Você pode refazer o quiz quantas vezes desejar</span>
+
+        <span id="posicao">Posição de interesse: <span style="color: #1A2435">${lista_usuario[10]}</span></span>
+        `;
+
+        div_resultado.style.display = 'flex';
+
+      
+        var posicao = lista_usuario[10];
+
+
+          fetch("/usuarios/resposta", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+         
+          posicao: posicao,
+          nota: acertos,
+          idusuario: sessionStorage.ID_USUARIO
+          
+      }),
+  });
+  return false;
 
     }
 

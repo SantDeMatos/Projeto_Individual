@@ -79,9 +79,41 @@ function cadastrar(req, res) {
     }
 }
 
+function resposta(req, res){
+
+    var posicao = req.body.posicao
+    var nota = req.body.nota
+    var id = req.body.idusuario
+
+     if (posicao == undefined) {
+        res.status(400).send("Seu op1 está undefined!");
+    }  else if (nota == undefined) {
+        res.status(400).send("Sua nota está undefined!");
+    } else if (id == undefined) {
+        res.status(400).send("Seu id está undefined!");
+    } else{
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.resposta(posicao,nota,id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
 
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    resposta
 }
