@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/quiz.css">
+    <title>Quiz</title>
+</head>
+<body>
+    
+    
+    
+    <div class="menu_bar">
+
+        <div class="div_logo"></div>
+
+        <nav class="nav_menu_links">
+
+            <button class="btn_home" onclick="home()"><img src="../assets/icons/home.svg" class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" style="background-color: #B2892B;" onclick="quiz()"><img src="../assets/icons/quiz.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="favoritar()"><img src="../assets/icons/estrela.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home"   onclick="perfil()"><img src="../assets/icons/perfil.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="sair()"><img src="../assets/icons/sair.png"  class="img_menu"></button>
+
+
+        </nav>
+
+    </div>
+
+    <div class="div_container_quiz">
+
+        <div class="div_quiz">
+
+            <span class="span_titulo">QUIZ - SANTS VOLLEYBALL</span>
+
+            <div class="div_perguntas" id="div_perguntas">
+
+        
+                <button onclick="comecar()" class="btn_comecar">COMEÇAR O QUIZ</button>
+                
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="div_resultado" id="div_resultado"></div>
+
+</body>
+</html>
+
+
+<script>
+
+var i = 0;
+var questoes = [{
+
+    pergunta: '1- Qual a quantidade  de medalhas de ouro que o Brasil tem no vôlei?',
+    alternativaA: 'a)  4 medalhas',
+     alternativaB: 'b)  6 medalhas',
+      alternativaC: 'c)  5 medalhas',
+       alternativaD: 'd)  2 medalhas'
+
+},
+
+{
+
+     pergunta: '2- Em que ano foi criada a CBV (Confederação Brasileira de Voleibol)?',
+    alternativaA: 'a) Em 1962',
+     alternativaB: 'b) Em 1953',
+      alternativaC: 'c) Em 1954',
+       alternativaD: 'd) Em 1955'
+    
+
+},
+
+{
+
+     pergunta: '3- Qual das opções abaixo contém somente fundamentos do vôlei?',
+    alternativaA: 'a)  Saque, toque e rotação 3x3',
+     alternativaB: 'b)  Levantamento, escanteio e toque',
+      alternativaC: 'c)  Saque, toque e ataque',
+       alternativaD: 'd)  Bloqueio, saque e reset'
+    
+
+},
+
+{
+
+     pergunta: '4-  Por volta de que ano o vôlei chegou no Brasil?',
+    alternativaA: 'a) Em 1920',
+     alternativaB: 'b) Em 1914',
+      alternativaC: 'c) Em 1910',
+       alternativaD: 'd) Em 1915'
+    
+
+},
+
+
+{
+
+     pergunta: '5- Em qual toque normalmente ocorre o levantamento?',
+    alternativaA: 'a) Primeiro toque',
+     alternativaB: 'b) Terceiro toque',
+      alternativaC: 'c) Segundo toque',
+       alternativaD: 'd) Quarto toque'
+    
+
+},
+
+
+{
+
+     pergunta: '6- Quantos sets tem um jogo de vôlei?',
+    alternativaA: 'a) 3 sets',
+     alternativaB: 'b) 2 sets',
+      alternativaC: 'c) 7 sets',
+       alternativaD: 'd) 5 sets'
+    
+
+},
+
+
+{
+
+     pergunta: '7- O que acontece caso algum jogador toque a rede durante o jogo?',
+    alternativaA: 'a) O jogo é reiniciado',
+     alternativaB: 'b) É marcado ponto para a equipe adversária',
+      alternativaC: 'c) Nada acontece, pois não é uma infração',
+       alternativaD: 'd) É marcado ponto para a equipe que cometeu a infração'
+    
+
+},
+
+
+{
+
+     pergunta: '8- Qual é a posição que não pode realizar nenhum tipo de ataque?',
+    alternativaA: 'a) Levantador',
+     alternativaB: 'b) Oposto',
+      alternativaC: 'c) Central',
+       alternativaD: 'd) Líbero'
+    
+
+},
+
+
+{
+
+     pergunta: '9-  O que são os sinais do levantador?',
+    alternativaA: 'a) Mostra para os adversários quantos pontos estão afrente',
+     alternativaB: 'b) Indica qual jogador está com mais pontos',
+      alternativaC: 'c) Indica somente a velocidade do levantamento',
+       alternativaD: 'd) Indica aos outros jogadores qual jogada será feita'
+    
+
+},
+
+
+{
+
+     pergunta: '10- Qual é a especialidade do Oposto?',
+    alternativaA: 'a) Atacar no centro da rede',
+     alternativaB: 'b) Atacar, principalmente nos momentos mais difíceis',
+      alternativaC: 'c) Levantar a bola para o levantador',
+       alternativaD: 'd) Defender o saque'
+    
+
+},
+
+
+{
+
+     pergunta: '11 (Pergunta extra, não vale pontuação) - Qual a posição você joga ou tem mais interesse em jogar?',
+    alternativaA: 'a) Oposto (foco no fundamento de ataque)',
+     alternativaB: 'b) Ponteiro ( foco no ataque e defesa de forma equilibrada)',
+      alternativaC: 'c) Levantador (foco no levantamento e toque precisos)',
+       alternativaD: 'd) Líbero ( foco no fundamento de defesa e passe)',
+       alternativaE: 'e) Central ( foco no fundamento de ataque e levantamento mais rápidos)'
+    
+
+}
+
+];
+
+
+
+var lista_respostas_certas = [];
+
+var lista_usuario = [];
+
+
+function sair(){
+
+        sessionStorage.clear();
+        window.location = '../index.html'
+
+}
+
+function quiz(){
+
+        window.location ='quiz.html';
+
+}
+
+function home(){
+
+    window.location = 'home_user.html'
+}
+
+
+function favoritar(){
+
+    window.location = 'favoritos.html'
+
+}
+
+
+function perfil(){
+
+    window.location = 'perfil.html'
+}
+
+function comecar(){
+
+    if( i == 10){
+
+        
+        div_perguntas.innerHTML = `
+            <span class="span_pergunta"> ${questoes[i].pergunta}</span>
+
+                <button class="btn_opc" id="a" onclick="resposta(this)">${questoes[i].alternativaA}</button>
+                <button class="btn_opc"  id="b" onclick="resposta(this)">${questoes[i].alternativaB}</button>
+                <button class="btn_opc" id="c" onclick="resposta(this)">${questoes[i].alternativaC}</button>
+                <button class="btn_opc" id="d" onclick="resposta(this)">${questoes[i].alternativaD}</button>
+                 <button class="btn_opc" id="e" onclick="resposta(this)">${questoes[i].alternativaE}</button>
+            `;
+
+
+    }else{
+
+
+         div_perguntas.innerHTML = `
+            <span class="span_pergunta"> ${questoes[i].pergunta}</span>
+
+                <button class="btn_opc" id="a" onclick="resposta(this)">${questoes[i].alternativaA}</button>
+                <button class="btn_opc"  id="b" onclick="resposta(this)">${questoes[i].alternativaB}</button>
+                <button class="btn_opc" id="c" onclick="resposta(this)">${questoes[i].alternativaC}</button>
+                <button class="btn_opc" id="d" onclick="resposta(this)">${questoes[i].alternativaD}</button>
+            `;
+
+
+    }
+
+       
+
+    }
+
+
+
+
+function resposta(botao){
+
+    var resposta = botao.id;
+    lista_usuario.push(resposta);
+    i++;
+
+    if( i == 11){
+
+        
+
+    }
+
+    else{
+
+         comecar();
+
+
+    }
+
+   
+}
+
+
+
+
+</script>

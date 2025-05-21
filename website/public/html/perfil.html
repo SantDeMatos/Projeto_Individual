@@ -47,6 +47,54 @@
 
             <span class="span_titulo_perfil">PERFIL</span>
 
+            <div class="div_content_perfil">
+
+            <div class="div_campos_form">
+
+                <span class="titulo_info">Nome:</span>
+
+                <div class="div_org">
+
+                    <span class="nome_info" id="span_nome"></span>
+
+                </div>
+
+                 <span class="titulo_info">Telefone:</span>
+
+                     <div class="div_org">
+
+                    <span class="nome_info" id="span_telefone"></span>
+
+                </div>
+
+
+                  <span class="titulo_info">Email:</span>
+
+
+                      <div class="div_org">
+
+                    <span class="nome_info" id="span_email"></span>
+
+                </div>
+
+
+                   <span class="titulo_info">Senha:</span>
+
+
+                       <div class="div_org">
+
+                    <span class="nome_info" id="span_senha"></span>
+
+                </div>
+
+
+            </div>
+
+            <div class="div_img_sant"></div>
+
+            </div>
+
+         
 
         </div>
 
@@ -57,6 +105,16 @@
 
 
 <script>
+
+    var nome = sessionStorage.NOME_USUARIO;
+    var telefone = sessionStorage.TELEFONE_USUARIO;
+    var email = sessionStorage.EMAIL_USUARIO;
+    var senha = sessionStorage.SENHA_USUARIO;
+
+    span_nome.innerHTML = nome;
+    span_telefone.innerHTML = telefone;
+    span_email.innerHTML = email;
+    span_senha.innerHTML = senha;
 
 
 function sair(){
@@ -78,10 +136,18 @@ function favoritar(){
 
 }
 
+function quiz(){
+
+        window.location ='quiz.html';
+
+}
 
 function perfil(){
 
     window.location = 'perfil.html'
 }
+
+
+
 
 </script>
