@@ -25,19 +25,11 @@ create table quiz(
 idquiz int primary key auto_increment,
 fkusuario int not null,
 constraint fkusuarioquiz foreign key (fkusuario) references usuario(idusuario),
-op1 varchar(1) not null,
-op2 varchar(1) not null,
-op3 varchar(1) not null,
-op4 varchar(1) not null,
-op5 varchar(1) not null,
-op6 varchar(1) not null,
-op7 varchar(1) not null,
-op8 varchar(1) not null,
-op9 varchar(1) not null,
-op10 varchar(1) not null,
-op11 varchar(1) not null,
-dtquiz date not null
+posicao varchar(20) not null,
+dtquiz date not null,
+nota int
 );
+
 
 create table jogadores(
 
@@ -90,6 +82,12 @@ truncate table usuario;
 select * from usuario;
 
 describe quiz;
+
+select * from quiz;
+
+
+
+alter table quiz modify column op11 varchar(20);
 
 
 
