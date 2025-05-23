@@ -35,10 +35,26 @@ function resposta(posicao,nota,id) {
 }
 
 
+function listar_jogadores(){
+
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+      select * from jogadores;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
 
 
 module.exports = {
     autenticar,
     cadastrar,
-    resposta
+    resposta,
+    listar_jogadores
 };

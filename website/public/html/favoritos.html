@@ -54,22 +54,9 @@
 
             <span class="span_jogadores">Jogadores encontrados...</span>
 
-            <div class="div_content_jogadores">
+            <div class="div_content_jogadores" id="div_cont_jog">
 
-                <div class="div_card">
-
-                    <div class="div_img_jogador"></div>
-
-                    <span class="span_info">
-
-                        Nome: Honorato<br> Idade: 26<br> Clube: Joinville - Brasil
-
-                    </span>
-
-                    <button onclick="favoritar()" class="btn_fav"><img src="../assets/icons/estrela.png" class="img_fav"></button>
-
-                </div>
-
+              
             </div>
 
         </div>
@@ -117,6 +104,9 @@
 
 <script>
 
+ window.onload = function () {
+       listar_jogadores();
+    };
 
 function sair(){
 
@@ -149,5 +139,53 @@ function quiz(){
 
 }
 
+
+  function listar_jogadores(){
+
+
+           fetch(`/usuarios/listar_jogadores/`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(lista_jog => {
+         
+                lista_jog.forEach(lista_jog => {
+
+                   div_cont_jog.innerHTML += `<div class="div_card">
+
+                    <img class="div_img_jogador" src="${lista_jog.foto}"></img>
+
+                    <span class="span_info">
+
+                        Nome: ${lista_jog.nome}<br> Idade: ${lista_jog.idade}<br> Clube: ${lista_jog.clube}
+
+                    </span>
+
+                    <button onclick="favoritar_jog(this)" id="${lista_jog.idjogadores}" class="btn_fav"><img src="../assets/icons/estrela.png" class="img_fav"></button>
+
+                </div>
+
+            </div>
+`
+                    
+
+
+                });
+
+              
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+      
+    }
+
+    function favoritar_jog(botao){
+
+        console.log(botao.id);
+
+    }
 
 </script>

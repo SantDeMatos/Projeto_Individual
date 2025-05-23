@@ -13,6 +13,11 @@ router.post("/resposta", function (req, res) {
 })
 
 
+router.get("/listar_jogadores", function (req, res) {
+    usuarioController.listar_jogadores(req, res);
+})
+
+
 
 
 router.post("/autenticar", function (req, res) {

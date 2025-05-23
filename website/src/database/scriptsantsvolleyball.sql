@@ -6,6 +6,16 @@ create database santsvolley;
 
 use santsvolley;
 
+select * from jogadores;
+
+insert into jogadores values (default, 'Bruninho', 38, 'Renata/Campinas', 'Atuando', '../assets/imgs/jogadores/bruninho.webp');
+
+truncate jogadores;
+
+alter table jogadores modify column foto varchar(255);
+
+
+
 alter table usuario modify column nome varchar(155) not null;
 
 create table usuario(
