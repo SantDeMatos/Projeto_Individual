@@ -114,8 +114,35 @@ function resposta(req, res){
 
 function listar_jogadores(req,res){
 
+         var id = req.params.id
+
+    
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.listar_jogadores()
+        usuarioModel.listar_jogadores(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+
+    
+function listar_clubes(req,res){
+
+     var id = req.params.id
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.listar_clubes(id)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -134,11 +161,81 @@ function listar_jogadores(req,res){
 
 
 
+function favoritarclube(req, res){
+
+    var idusuario = req.body.idusuario
+    var idclu = req.body.idclu
+
+  
+
+     if (idusuario == undefined) {
+        res.status(400).send("Seu id do usuário está undefined");
+    }  else if (idclu == undefined) {
+        res.status(400).send("Sua nota está undefined!");
+    } else{
+
+                
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.favoritarclube(idusuario,idclu)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+
+}
+
+
+function favoritarjogador(req, res){
+
+    var idusuario = req.body.idusuario
+    var idjog = req.body.idjog
+
+
+
+     if (idusuario == undefined) {
+        res.status(400).send("Seu id do usuário está undefined");
+    }  else if (idjog == undefined) {
+        res.status(400).send("Sua idjog está undefined!");
+    } else{
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.favoritarjogador(idusuario,idjog)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
 
 
 module.exports = {
     autenticar,
     cadastrar,
     resposta,
-    listar_jogadores
+    listar_jogadores,
+    listar_clubes,
+    favoritarclube,
+    favoritarjogador
 }

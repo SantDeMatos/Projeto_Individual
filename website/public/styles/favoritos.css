@@ -255,7 +255,7 @@ body{
     font-weight: bold;
     color: white;
     margin-left: 5%;
-    width: 50%;
+    width: 45%;
     font-size: 15px;
     line-height: 30px;
 }
@@ -269,7 +269,7 @@ body{
     cursor: pointer;
     background-color: transparent;
     align-self: flex-start;
-    margin-left: 10%;
+    margin-left: 6%;
     margin-top: 2%;
 }
 

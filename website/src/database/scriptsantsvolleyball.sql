@@ -8,7 +8,9 @@ use santsvolley;
 
 select * from jogadores;
 
-insert into jogadores values (default, 'Bruninho', 38, 'Renata/Campinas', 'Atuando', '../assets/imgs/jogadores/bruninho.webp');
+delete from jogadores where idjogadores = 5;
+
+insert into jogadores values (default, 'Cachopa', 29, ' Volley Monza ', 'Atuando', '../assets/imgs/jogadores/cachopa.jpg');
 
 truncate jogadores;
 

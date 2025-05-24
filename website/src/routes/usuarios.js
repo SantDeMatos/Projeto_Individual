@@ -12,11 +12,22 @@ router.post("/resposta", function (req, res) {
     usuarioController.resposta(req, res);
 })
 
+router.post("/favoritarclube", function (req, res) {
+    usuarioController.favoritarclube(req, res);
+})
 
-router.get("/listar_jogadores", function (req, res) {
+
+router.post("/favoritarjogador", function (req, res) {
+    usuarioController.favoritarjogador(req, res);
+})
+
+router.get("/listar_jogadores/:id", function (req, res) {
     usuarioController.listar_jogadores(req, res);
 })
 
+router.get("/listar_clubes/:id", function (req, res) {
+    usuarioController.listar_clubes(req, res);
+})
 
 
 

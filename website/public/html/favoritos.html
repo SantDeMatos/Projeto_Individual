@@ -65,27 +65,9 @@
 
             <span class="span_jogadores">Clubes encontrados...</span>
 
-            <div class="div_content_clubes">
-
-                  <div class="div_card">
-
-                       <div class="div_img_jogador"></div>
-
-                    <span class="span_info">
-
-                        Nome: Honorato<br> Idade: 26<br> Clube: Joinville - Brasil
-
-                    </span>
-
-                    <button onclick="favoritar()" class="btn_fav"><img src="../assets/icons/estrela.png" class="img_fav"></button>
-
-
-                </div>
+            <div class="div_content_clubes" id="div_cont_clu">
 
                 
-
-                
-
                 
             </div>
 
@@ -106,6 +88,7 @@
 
  window.onload = function () {
        listar_jogadores();
+       listar_clubes();
     };
 
 function sair(){
@@ -142,8 +125,10 @@ function quiz(){
 
   function listar_jogadores(){
 
+        var id = sessionStorage.ID_USUARIO
 
-           fetch(`/usuarios/listar_jogadores/`, {
+
+           fetch(`/usuarios/listar_jogadores/${id}`, {
             method: "GET"
         })
             .then(res => res.json())
@@ -161,7 +146,7 @@ function quiz(){
 
                     </span>
 
-                    <button onclick="favoritar_jog(this)" id="${lista_jog.idjogadores}" class="btn_fav"><img src="../assets/icons/estrela.png" class="img_fav"></button>
+                    <button onclick="favoritarjogador(this)" id="${lista_jog.idjogadores}" class="btn_fav"><img src="../assets/icons/estrela.png" class="img_fav"></button>
 
                 </div>
 
@@ -182,10 +167,145 @@ function quiz(){
       
     }
 
-    function favoritar_jog(botao){
+    // Favoritar Clubes
 
-        console.log(botao.id);
+
+    
+  function listar_clubes(){
+
+    var id = sessionStorage.ID_USUARIO
+
+           fetch(`/usuarios/listar_clubes/${id}`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(lista_clu => {
+         
+                lista_clu.forEach(lista_clu => {
+
+                   div_cont_clu.innerHTML += `<div class="div_card">
+
+                    <img class="div_img_jogador" src="${lista_clu.foto}"></img>
+
+                    <span class="span_info">
+
+                        Nome: ${lista_clu.nome}<br> Liga: ${lista_clu.liga}<br> Ano de Fundação: ${lista_clu.dtfund}
+
+                    </span>
+
+                    <button onclick="favoritarclube(this)" id="${lista_clu.idclubes}" class="btn_fav"><img src="../assets/icons/estrela.png" class="img_fav"></button>
+
+                </div>
+
+            </div>
+`
+                    
+
+
+                });
+
+              
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+      
+    }
+
+
+    
+    function favoritarclube(botao){
+
+     
+        var idclu = botao.id;
+
+        var idusuario = sessionStorage.ID_USUARIO;
+        
+            fetch("/usuarios/favoritarclube", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          idusuario: idusuario,
+          idclu: idclu
+      }),
+  })
+      .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+
+             alert('Clube Favoritado com sucesso');
+            
+             window.location.reload();
+            //    setTimeout(() => {
+            //     window.location.reload()
+            // }, "1000");
+
+          } else {
+              throw new Error ("Erro no favoritar!");
+          }
+      })
+      .catch(function (erro) {
+          console.error(`#ERRO: ${erro}`);
+        
+      });
+
+  return false;
+    }
+
+
+    
+    function favoritarjogador(botaojog){
+
+      
+        var idjog = botaojog.id;
+
+        var idusuario = sessionStorage.ID_USUARIO;
+        
+            fetch("/usuarios/favoritarjogador", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          idusuario: idusuario,
+          idjog: idjog
+      }),
+  })
+      .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+
+            alert('Jogador Favoritado com sucesso')
+            
+             
+             window.location.reload();
+            //    setTimeout(() => {
+            //     window.location.reload()
+            // }, "1000");
+
+
+          } else {
+              throw new Error ("Erro no favoritar!");
+          }
+      })
+      .catch(function (erro) {
+          console.error(`#ERRO: ${erro}`);
+        
+      });
+
+    return false; 
 
     }
+
 
 </script>
