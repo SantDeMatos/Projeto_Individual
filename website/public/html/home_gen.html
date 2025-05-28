@@ -3,11 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/home_gen.css">
     <title>Home</title>
 </head>
 <body>
 
-    <h1>Gen</h1>
-    
+
+    <div class="menu_bar">
+
+        <div class="div_logo"></div>
+
+        <nav class="nav_menu_links">
+
+            <button class="btn_home" style="background-color: #B2892B;" onclick="home()"><img src="../assets/icons/home.svg" class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="usuarios()"><img src="../assets/icons/usuarios.svg"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="perfil()"><img style="width: 45px; height: 45px;" src="../assets/icons/perfil.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="sair()"><img src="../assets/icons/sair.png"  class="img_menu"></button>
+
+
+        </nav>
+
+    </div>    
+
+
+    <div class="div_container">
+
+
+        <div class="div_kpis">
+
+            <div class="div_card_kpi">
+
+                <img src="../assets/icons/qtdquiz.svg" class="img_kpi">
+
+                <div class="div_texto_kpi">
+
+                    <span>QTD RESPOSTAS QUIZ</span>
+                    <span style="font-size: 55px;">12</span>
+
+                </div>
+
+            </div>
+            <div class="div_card_kpi">
+
+                  <img src="../assets/icons/score.svg" class="img_kpi">
+
+                <div class="div_texto_kpi">
+
+                    <span>NOTA MÉDIA DO QUIZ</span>
+                    <span style="font-size: 55px;">8</span>
+
+                </div>
+
+                
+            </div>
+            <div class="div_card_kpi">
+
+                  <img src="../assets/icons/volley.svg" class="img_kpi">
+
+                <div class="div_texto_kpi">
+
+                    <span style="font-size: 12px;">POSIÇÃO MAIS ESCOLHIDA</span>
+                    <span style="font-size: 26px; margin-bottom: 12%;">PONTEIRO</span>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        <div class="div_container_graph">
+
+            <div class="div_borda_graph">
+
+                <div class="div_graphic_1">
+
+                </div>
+
+                <div class="div_graphic_2">
+
+                    <div class="div_graph_jog"></div>
+                    <div class="div_graph_jog"></div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
 </body>
 </html>
+
+<script>
+
+
+ window.onload = function () {
+     listar_jog();
+     listar_clu();
+     dicas();
+    };
+
+    
+function sair(){
+
+        sessionStorage.clear();
+        window.location = '../index.html'
+
+}
+
+function home(){
+
+    window.location = 'home_gen.html'
+}
+
+
+function usuario(){
+
+    window.location = ''
+
+
+}
+
+
+
+function perfil(){
+
+    window.location = 'perfil_gen.html'
+
+}
+
+</script>

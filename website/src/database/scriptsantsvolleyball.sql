@@ -6,19 +6,10 @@ create database santsvolley;
 
 use santsvolley;
 
-select * from jogadores;
-
-delete from jogadores where idjogadores = 5;
 
 insert into jogadores values (default, 'Cachopa', 29, ' Volley Monza ', 'Atuando', '../assets/imgs/jogadores/cachopa.jpg');
 
-truncate jogadores;
 
-alter table jogadores modify column foto varchar(255);
-
-
-
-alter table usuario modify column nome varchar(155) not null;
 
 create table usuario(
 
@@ -31,6 +22,8 @@ cargo varchar(45) not null,
 constraint chkCheck check (cargo in('Normal','Gerente'))
 
 );
+
+insert into usuario values (default, 'Matheus', 'matheus@gmail.com', '96454-2424', 'matheussantana', 'Gerente');
 
 create table quiz(
 
@@ -49,11 +42,11 @@ idjogadores int primary key auto_increment,
 nome varchar(120) not null,
 idade int not null,
 clube varchar(45) not null,
-statusj varchar(45) not null,
-constraint chkstatusj check (statusj in('Atuando','Aposentado')),
-foto blob not null
+foto varchar(255) not null
 
 );
+
+
 
 create table favoritar_jogador(
 
@@ -66,12 +59,14 @@ constraint pkall primary key (idfavoritar_jogador, fkjogadores, fkusuario)
 
 );
 
+
 create table clubes(
 
 idclubes int primary key auto_increment,
 nome varchar(45) not null,
 liga varchar(45) not null,
-dtfund date not null
+dtfund char(4) not null,
+foto varchar(255) not null
 
 );
 
@@ -87,19 +82,9 @@ constraint pkallcl primary key (idfavoritar_clube, fkclube, fkusuario)
 
 );
 
-alter table quiz add column nota int;
-
-truncate table usuario;
-
-select * from usuario;
-
-describe quiz;
-
-select * from quiz;
 
 
 
-alter table quiz modify column op11 varchar(20);
 
 
 
