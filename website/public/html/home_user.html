@@ -48,16 +48,9 @@
             <span class="span_dicas">DICAS</span>
         </div>
       
-        <div class="div_favoritos"> 
+        <div class="div_favoritos" id="div_favoritos"> 
             
-        <div class="div_card">
-
-            <div class="div_img_card"></div>
-
-            <span class="span_texto_card">Honorato <br> Joinville</span>
-
-        </div>
-
+      
         </div>
 
      
@@ -66,7 +59,20 @@
 
             <div class="div_posicao">
 
-                <div class="titulo_pos"> <span>POSIÇÃO</span></div>
+                <div class="titulo_pos"> <span id="span_posicao">POSIÇÃO</span></div>
+
+                <div id="div_content_posicao">
+
+                    <div id="div_text_pos"></div>
+
+                    <div id="div_img_text_pos">
+
+                        
+
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -75,6 +81,8 @@
                 <div class="div_rotacao">
 
                     <div class="titulo_rot"><span>ROTAÇÃO</span></div>
+                    
+                    <div id="div_content_rotacao"></div>
 
 
                 </div>
@@ -82,6 +90,8 @@
                  <div class="div_fund">
 
                          <div class="titulo_fund"> <span>FUNDAMENTOS ESSENCIAIS</span></div>
+
+                         <div id="div_content_fund"></div>
 
                     
                 </div>
@@ -100,6 +110,11 @@
 
 <script>
 
+ window.onload = function () {
+     listar_jog();
+     listar_clu();
+     dicas();
+    };
 
 function sair(){
 
@@ -132,5 +147,170 @@ function perfil(){
     window.location = 'perfil.html'
 
 }
+
+
+
+
+  function listar_jog(){
+
+        var id = sessionStorage.ID_USUARIO;
+         div_favoritos.innerHTML = '';         
+
+           fetch(`/usuarios/listar_jog/${id}`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(lista_jog => {
+         
+                lista_jog.forEach(lista_jog => {
+                        
+                   div_favoritos.innerHTML += `<div class="div_card">
+
+                    <div class="div_img_card"><img class="img_div" src='${lista_jog.foto}'></div>
+
+                    <span class="span_texto_card">${lista_jog.nome} <br> ${lista_jog.clube}</span>
+
+                    </div>`;
+
+
+                });
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+
+      
+    }
+
+
+    function listar_clu(){
+
+         var id = sessionStorage.ID_USUARIO;
+
+           fetch(`/usuarios/listar_clu/${id}`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(lista_clu => {
+         
+                lista_clu.forEach(lista_clu => {
+                        
+                   div_favoritos.innerHTML += `<div class="div_card">
+
+                    <div class="div_img_card"><img class="img_div" src='${lista_clu.foto}'></div>
+
+                    <span class="span_texto_card">${lista_clu.nome} <br> ${lista_clu.dtfund}</span>
+
+                    </div>`;
+
+
+                });
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+
+    }
+
+
+    
+  function dicas(){
+
+        var id = sessionStorage.ID_USUARIO;
+
+               span_posicao.innerHTML = 'POSIÇÃO';  
+                div_text_pos.innerHTML = '';
+                div_content_rotacao.innerHTML = '';  
+                div_content_fund.innerHTML = ''; 
+                div_img_text_pos.innerHTML = '' 
+
+           fetch(`/usuarios/dicas/${id}`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(dicas => {
+         
+               
+                dicas.forEach(dicas => {
+                        
+                  var posicao = dicas.posicao;
+
+                  if(posicao == 'Ponteiro'){
+
+                     span_posicao.innerHTML = 'PONTEIRO';  
+                     div_text_pos.innerHTML = 'Faça o quiz para obter mais dicas';
+                    div_content_rotacao.innerHTML = '';  
+                    div_content_fund.innerHTML = '';  
+
+                  }else if( posicao == 'Oposto'){
+
+                     span_posicao.innerHTML = 'OPOSTO';  
+                     div_text_pos.innerHTML = 'Faça o quiz para obter mais dicas';
+                    div_content_rotacao.innerHTML = '';  
+                    div_content_fund.innerHTML = '';  
+
+                  }else if( posicao == 'Levantador'){
+
+                     span_posicao.innerHTML = 'LEVANTADOR';  
+                    div_content_rotacao.innerHTML = ''; 
+                    div_text_pos.innerHTML = 'Faça o quiz para obter mais dicas';   
+                    div_content_fund.innerHTML = '';  
+
+                  }else if(posicao == 'Líbero'){
+
+                     span_posicao.innerHTML = 'LÍBERO';  
+                    div_text_pos.innerHTML = `<li>O líbero é uma posição especializada na defesa, atuando no fundo da quadra. Ele é o principal recebedor de saques e a segunda linha de defesa contra ataques, com a missão de manter a bola em jogo. O líbero não pode sacar, atacar ou bloquear.</li> <br>
+                    
+                    <span style="color: gold;">CARACTERÍSTICAS DE UM LÍBERO:</span>
+                    <br>
+                    
+                    <li>Especialista na defesa</li>
+                    <li>Rapidez e Agilidade</li>
+                    <li>Boa Reação e Tempo de Resposta</li>
+                     <li>Posicionamento Estratégico</li>`;
+
+                    div_img_text_pos.innerHTML = `<div class="img_pos_lib"></div><span>Thales Hoss <br>Bogdanka LUK Lublin</span>` ;
+  
+                    div_content_rotacao.innerHTML = `<span class="span_rotacao">No sistema de rotação 5x1 do voleibol, o levantador está sempre no fundo da quadra, formando a base para o ataque e a defesa. A rotação acontece em cada ponto marcado após o saque adversário, e o levantador acompanha a movimentação do time, estando sempre no fundo.  
+                        </span> <div class="img_rotacao"></div> `;  
+                    div_content_fund.innerHTML = `<li>Recepção: A capacidade de receber a bola adversária, seja no saque ou no ataque, com precisão e controle para facilitar o jogo da equipe. </li>
+                    <li>Defesa: Interceptar a bola adversária, principalmente bolas de ataque, e repassar para um companheiro, formando a base para o contra-ataque. </li>
+                    
+                 
+                   `;  
+
+
+                  }else if(posicao ==  'Central'){
+
+                    span_posicao.innerHTML = 'CENTRAL';  
+                     div_text_pos.innerHTML = 'Faça o quiz para obter mais dicas';  
+                    div_content_rotacao.innerHTML = '';  
+                    div_content_fund.innerHTML = '';  
+
+
+                  }else{
+
+                     div_content_posicao.innerHTML = 'Faça o quiz para obter mais dicas';  
+                    div_content_rotacao.innerHTML = '';  
+                    div_content_fund.innerHTML = '';  
+
+                  }
+
+
+                });
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+
+      
+    }
+
 
 </script>

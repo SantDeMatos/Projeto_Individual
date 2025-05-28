@@ -25,6 +25,22 @@ router.get("/listar_jogadores/:id", function (req, res) {
     usuarioController.listar_jogadores(req, res);
 })
 
+
+router.get("/listar_jog/:id", function (req, res) {
+    usuarioController.listar_jog(req, res);
+})
+
+
+router.get("/listar_clu/:id", function (req, res) {
+    usuarioController.listar_clu(req, res);
+})
+
+router.get("/dicas/:id", function (req, res) {
+    usuarioController.dicas(req, res);
+})
+
+
+
 router.get("/listar_clubes/:id", function (req, res) {
     usuarioController.listar_clubes(req, res);
 })

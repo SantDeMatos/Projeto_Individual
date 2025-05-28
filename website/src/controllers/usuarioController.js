@@ -160,6 +160,54 @@ function listar_clubes(req,res){
     }
 
 
+    function listar_jog(req,res){
+
+     var id = req.params.id
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.listar_jog(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+
+    
+    function listar_clu(req,res){
+
+     var id = req.params.id
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.listar_clu(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+
+
 
 function favoritarclube(req, res){
 
@@ -230,6 +278,32 @@ function favoritarjogador(req, res){
 }
 
 
+
+
+    function dicas(req,res){
+
+     var id = req.params.id
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.dicas(id)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -237,5 +311,8 @@ module.exports = {
     listar_jogadores,
     listar_clubes,
     favoritarclube,
-    favoritarjogador
+    favoritarjogador,
+    listar_jog,
+    listar_clu,
+    dicas
 }

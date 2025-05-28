@@ -67,6 +67,35 @@ function listar_clubes(id){
 
 }
 
+function listar_jog(id){
+
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+  select jog.nome, jog.clube, jog.foto from jogadores as jog join favoritar_jogador as fvj on fvj.fkjogadores = jog.idjogadores where fvj.fkusuario = ${id};`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+function listar_clu(id){
+
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+  select clu.nome, clu.dtfund, clu.foto from clubes as clu join favoritar_clube as fvc on fvc.fkclube = clu.idclubes where fvc.fkusuario = ${id};`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+
 
 function favoritarclube(idusuario,idclu){
 
@@ -98,6 +127,24 @@ function favoritarjogador(idusuario,idjog){
 
 }
 
+function dicas(id){
+
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+   select q.posicao from quiz as q join usuario as us on us.idusuario = q.fkusuario  where us.idusuario = ${id} order by q.idquiz desc limit 1;
+
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+
 
 
 
@@ -110,5 +157,8 @@ module.exports = {
     listar_jogadores,
     listar_clubes,
     favoritarclube,
-    favoritarjogador
+    favoritarjogador,
+    listar_jog,
+    listar_clu,
+    dicas
 };
