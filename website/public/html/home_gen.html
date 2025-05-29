@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/home_gen.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <title>Home</title>
 </head>
 <body>
@@ -48,7 +50,7 @@
                 <div class="div_texto_kpi">
 
                     <span>QTD RESPOSTAS QUIZ</span>
-                    <span style="font-size: 55px;">12</span>
+                    <span style="font-size: 55px;" id="qtdquiz">12</span>
 
                 </div>
 
@@ -60,7 +62,7 @@
                 <div class="div_texto_kpi">
 
                     <span>NOTA MÉDIA DO QUIZ</span>
-                    <span style="font-size: 55px;">8</span>
+                    <span style="font-size: 55px;" id="notamed">8</span>
 
                 </div>
 
@@ -73,7 +75,7 @@
                 <div class="div_texto_kpi">
 
                     <span style="font-size: 12px;">POSIÇÃO MAIS ESCOLHIDA</span>
-                    <span style="font-size: 26px; margin-bottom: 12%;">PONTEIRO</span>
+                    <span style="font-size: 26px; margin-bottom: 12%;" id="posicao">PONTEIRO</span>
 
                 </div>
 
@@ -89,12 +91,57 @@
 
                 <div class="div_graphic_1">
 
+                    <span>TOP 3 POSIÇÕES MAIS ESCOLHIDAS</span>
+                    <div>
+                        <canvas id="myChart" width="350" height="350"></canvas>
+                    </div>
+
                 </div>
 
                 <div class="div_graphic_2">
 
-                    <div class="div_graph_jog"></div>
-                    <div class="div_graph_jog"></div>
+                    <div class="div_graph_jog">
+
+                        <span>RANKING DOS JOGADORES MAIS ESCOLHIDOS</span>
+
+                        <div class="div_ranking">
+
+                            <div>
+                        <canvas id="myChart2" width="200" height="130"></canvas>
+                    </div>
+
+                    <span>
+
+                        1. Bruninho<br>
+                        2. Bruninho<br>
+                        3. Bruninho<br>
+                        4. Bruninho<br>
+                    </span>
+
+                        </div>
+
+                    </div>
+                    <div class="div_graph_jog">
+
+
+                           <span>RANKING DOS CLUBES MAIS ESCOLHIDOS</span>
+
+                        <div class="div_ranking">
+
+                              <div>
+                        <canvas id="myChart3" width="200" height="130"></canvas>
+                    </div>
+
+                    <span>
+
+                        1. Bruninho<br>
+                        2. Bruninho<br>
+                        3. Bruninho<br>
+                        4. Bruninho<br>
+                    </span>
+                            
+                        </div>
+                    </div>
 
                 </div>
 
@@ -110,13 +157,198 @@
 <script>
 
 
+
  window.onload = function () {
-     listar_jog();
-     listar_clu();
-     dicas();
+        kpi();
+        kpi2();
+        kpi3();
+        graphic();
+        graphic2();
+        graphic3();
+    
     };
 
     
+
+  function kpi(){
+
+     
+        qtdquiz.innerHTML = '';
+        notamed.innerHTML = '';
+        posicao.innerHTML = '';
+
+           fetch(`/gerente/kpi`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(kpi => {
+         
+                kpi.forEach(kpi => {
+                        
+                      posicao.innerHTML = kpi.pos.toUpperCase();
+
+                });
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+
+      
+    }
+
+
+    
+  function kpi2(){
+
+     
+        notamed.innerHTML = '';
+      
+           fetch(`/gerente/kpi2`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(kpi2 => {
+         
+                kpi2.forEach(kpi2 => {
+                        
+                      notamed.innerHTML = kpi2.media;
+
+                });
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+
+      
+    }
+
+    
+  function kpi3(){
+
+     
+        qtdquiz.innerHTML = '';
+      
+           fetch(`/gerente/kpi3`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(kpi3 => {
+         
+                kpi3.forEach(kpi3 => {
+                        
+                      qtdquiz.innerHTML = kpi3.qtdresp;
+
+                });
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+
+      
+    }
+
+        function graphic(){
+
+          var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Red", "Blue", "Yellow"],
+                datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 10]
+                }]
+            },
+            options: {
+                borderDash: false,
+                color: '#fff'
+            }
+            });
+
+
+             }
+
+
+
+             
+        function graphic2(){
+
+            Chart.defaults.color = '#fff';
+            Chart.defaults.borderColor = 'gray';
+
+
+          var ctx = document.getElementById("myChart2");
+            var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", 'White'],
+                datasets: [{
+                data: [20, 15, 10, 8],
+                 backgroundColor: [
+                'blue',
+                'white',
+                'yellow',
+                'green']
+                }]
+            },
+            options: {
+               plugins:{
+                    legend:{
+                        display: false
+                    }
+
+               },
+                color: '#fff'
+            }
+            });
+
+
+             }
+
+
+
+             
+        function graphic3(){
+
+            Chart.defaults.color = '#fff';
+            Chart.defaults.borderColor = 'gray';
+
+
+          var ctx = document.getElementById("myChart3");
+            var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", 'White'],
+                datasets: [{
+                data: [20, 15, 10, 8],
+                 backgroundColor: [
+                'blue',
+                'white',
+                'yellow',
+                'green']
+                }]
+            },
+            options: {
+               plugins:{
+                    legend:{
+                        display: false
+                    }
+
+               },
+                color: '#fff'
+            }
+            });
+
+
+             }
+
+
 function sair(){
 
         sessionStorage.clear();

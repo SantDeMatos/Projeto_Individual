@@ -5,14 +5,24 @@ var gerenteController = require("../controllers/gerenteController");
 
 //Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 
-router.get("/listar_clubes/:id", function (req, res) {
-    gerenteController.listar_clubes(req, res);
+router.get("/kpi", function (req, res) {
+    gerenteController.kpi(req, res);
+})
+
+
+router.get("/kpi2", function (req, res) {
+    gerenteController.kpi2(req, res);
+})
+
+
+router.get("/kpi3", function (req, res) {
+    gerenteController.kpi3(req, res);
 })
 
 
 
-router.post("/autenticar", function (req, res) {
-    gerenteController.autenticar(req, res);
-});
+
+
+
 
 module.exports = router;

@@ -6,6 +6,10 @@ create database santsvolley;
 
 use santsvolley;
 
+-- Campo de testes
+
+
+--
 
 insert into jogadores values (default, 'Cachopa', 29, ' Volley Monza ', 'Atuando', '../assets/imgs/jogadores/cachopa.jpg');
 
@@ -81,7 +85,6 @@ constraint fksnpranuscl foreign key (fkusuario) references usuario(idusuario),
 constraint pkallcl primary key (idfavoritar_clube, fkclube, fkusuario)
 
 );
-
 
 
 
