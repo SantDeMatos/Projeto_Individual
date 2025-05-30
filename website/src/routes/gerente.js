@@ -20,6 +20,21 @@ router.get("/kpi3", function (req, res) {
 })
 
 
+router.get("/dados_graf", function (req, res) {
+    gerenteController.dados_graf(req, res);
+})
+
+router.get("/dados_graf2", function (req, res) {
+    gerenteController.dados_graf2(req, res);
+})
+
+router.get("/dados_graf3", function (req, res) {
+    gerenteController.dados_graf3(req, res);
+})
+
+
+
+
 
 
 

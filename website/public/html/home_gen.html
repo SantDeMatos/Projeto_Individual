@@ -6,6 +6,8 @@
      <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/home_gen.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
     <title>Home</title>
 </head>
@@ -110,7 +112,7 @@
                         <canvas id="myChart2" width="200" height="130"></canvas>
                     </div>
 
-                    <span>
+                    <span id="span_jog">
 
                         1. Bruninho<br>
                         2. Bruninho<br>
@@ -132,12 +134,8 @@
                         <canvas id="myChart3" width="200" height="130"></canvas>
                     </div>
 
-                    <span>
+                    <span id="span_clu">
 
-                        1. Bruninho<br>
-                        2. Bruninho<br>
-                        3. Bruninho<br>
-                        4. Bruninho<br>
                     </span>
                             
                         </div>
@@ -157,14 +155,23 @@
 <script>
 
 
+var lista_posicao = [];
+var lista_qtd = [];
+
+var lista_jog = [];
+var lista_qtdjog = [];
+
+var lista_clu = [];
+var lista_qtdclu = [];
+
 
  window.onload = function () {
         kpi();
         kpi2();
         kpi3();
-        graphic();
-        graphic2();
-        graphic3();
+        dados_graf();
+        dados_graf2();
+       dados_graf3();
     
     };
 
@@ -253,22 +260,136 @@
       
     }
 
+    function dados_graf(){
+
+           fetch(`/gerente/dados_graf`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(dados => {
+         
+                dados.forEach(dados => {
+                    
+                      lista_posicao.push(dados.pos);
+                      lista_qtd.push(dados.qtd);
+                    });
+                    
+                    graphic();
+        
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+    }
+
+
+    
+    function dados_graf2(){
+
+        span_jog.innerHTML = '';
+        var rank = 1;
+
+           fetch(`/gerente/dados_graf2`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(dados => {
+         
+                dados.forEach(dados => {
+                    
+                      lista_jog.push(dados.nome);
+                      lista_qtdjog.push(dados.qtd);
+
+                      span_jog.innerHTML += `${rank}. ${dados.nome}<br>`;
+                      rank++;
+
+                    });
+                    
+                    graphic2();
+        
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+    }
+
+
+    
+    function dados_graf3(){
+
+        span_clu.innerHTML = '';
+        var rank = 1;
+
+           fetch(`/gerente/dados_graf3`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(dados => {
+         
+                dados.forEach(dados => {
+                    
+                      lista_clu.push(dados.nome);
+                      lista_qtdclu.push(dados.qtd);
+
+                      span_clu.innerHTML += `${rank}. ${dados.nome}<br>`;
+                      rank++;
+
+                    });
+                    
+                    graphic3();
+        
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+    }
+
+
+
+
         function graphic(){
 
+             Chart.defaults.font.size = "15px";
+                Chart.defaults.font.weight = "bold";
+                            Chart.defaults.color = '#fff';
+
+
+            var qtd1 = ((lista_qtd[0] / (lista_qtd[0] + (lista_qtd[1]) + (lista_qtd[2]))* 100));
+            var qtd2 = ((lista_qtd[1] / (lista_qtd[0] + (lista_qtd[1]) + (lista_qtd[2]))* 100));
+            var qtd3 = ((lista_qtd[2] / (lista_qtd[0] + (lista_qtd[1]) + (lista_qtd[2]))* 100));
+    
           var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ["Red", "Blue", "Yellow"],
+                labels: [lista_posicao[0],lista_posicao[1],lista_posicao[2],],
                 datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 10]
+                label: 'Porcentagem %',
+                data: [qtd1.toFixed(), qtd2.toFixed(),qtd3.toFixed()],
+                 backgroundColor: [
+                  'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ]
                 }]
             },
             options: {
                 borderDash: false,
-                color: '#fff'
+                color: '#fff',
+
+                  plugins: {
+                datalabels: {
+                    font: {
+                        size: 20 // Alterar para o tamanho desejado
+                    },
+                     formatter: (value) => {
+                    // Exemplo: Exibir valor com dois decimais e a unidade "%"
+                    return value + '%';
+                }
+                }
             }
+                         },
+            plugins:[ChartDataLabels]
             });
 
 
@@ -281,15 +402,17 @@
 
             Chart.defaults.color = '#fff';
             Chart.defaults.borderColor = 'gray';
+            Chart.defaults.font.weight = "bold";
+            Chart.defaults.font.size = "12px";
 
 
           var ctx = document.getElementById("myChart2");
             var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Red", "Blue", "Yellow", 'White'],
+                labels: [lista_jog[0], lista_jog[1],lista_jog[2],lista_jog[3]],
                 datasets: [{
-                data: [20, 15, 10, 8],
+                data: [lista_qtdjog[0], lista_qtdjog[1],  lista_qtdjog[2], lista_qtdjog[3]],
                  backgroundColor: [
                 'blue',
                 'white',
@@ -324,9 +447,9 @@
             var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["Red", "Blue", "Yellow", 'White'],
+                labels: [lista_clu[0], lista_clu[1],lista_clu[2],lista_clu[3]],
                 datasets: [{
-                data: [20, 15, 10, 8],
+                data: [lista_qtdclu[0], lista_qtdclu[1],  lista_qtdclu[2], lista_qtdclu[3]],
                  backgroundColor: [
                 'blue',
                 'white',
