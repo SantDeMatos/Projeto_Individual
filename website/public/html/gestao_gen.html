@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/gestao_gen.css">
+    <title>Gestão de Usuários</title>
+</head>
+<body>
+    
+    
+    <div class="menu_bar">
+
+        <div class="div_logo"></div>
+
+        <nav class="nav_menu_links">
+
+            <button class="btn_home" onclick="home()"><img src="../assets/icons/home.svg" class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="usuarios()" style="background-color: #B2892B;" ><img src="../assets/icons/usuarios.svg"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="perfil()"><img style="width: 45px; height: 45px;" src="../assets/icons/perfil.png"  class="img_menu"></button>
+
+            <div class="barra"></div>
+
+             <button class="btn_home" onclick="sair()"><img src="../assets/icons/sair.png"  class="img_menu"></button>
+
+
+        </nav>
+
+    </div>   
+    
+    <div class="div_container">
+
+        <div class="div_form">
+
+            <h2>ADICIONAR NOVO USUÁRIO</h2>
+            
+            <div class="div_campos">
+
+                <h3 class="h3_form">Nome:</h3>
+
+                <input type="text" class="inputs" id="input_nome" maxlength="155" placeholder="ex: Matheus Santana">
+
+                  <h3 class="h3_form">Telefone:</h3>
+
+                <input type="tel" class="inputs" id="input_telefone" maxlength="10" placeholder=" ex: 34435-1355">
+
+              
+
+                  <h3 class="h3_form">Email:</h3>
+
+                <input type="text" class="inputs" id="input_email" maxlength="45" placeholder="ex: Matheus@gmail.com">
+
+
+            </div>
+
+                            <button id="btn_add" onclick="cadastrar_gen()">ADICIONAR</button>
+
+
+        </div>
+
+         <div class="div_list">
+
+            <h2>LISTAGEM DE USUÁRIOS GERENTES</h2>
+
+            <div class="div_cont">
+
+                <div class="div_leg">
+
+                    <span style="margin-right: 10%;">NOME</span>
+                    <span>EMAIL</span>
+                    <span style="margin-left: 10%;">TELEFONE</span>
+                    <span>DEL</span>
+
+                </div>
+
+                <div id="div_dados" >
+
+                    
+
+                    
+
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+
+
+<script>
+
+     window.onload = function () {
+       listar();
+    
+    };
+
+
+
+    
+function sair(){
+
+        sessionStorage.clear();
+        window.location = '../index.html'
+
+}
+
+function home(){
+
+    window.location = 'home_gen.html'
+}
+
+
+function usuarios(){
+
+    window.location = 'gestao_gen.html'
+
+
+}
+
+
+
+function perfil(){
+
+    window.location = 'perfil_gen.html'
+
+}
+
+function deletar(btn){
+    
+          fetch("/gerente/deletar", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          id: btn.id
+      }),
+  });
+  
+  window.location.reload()
+  return false;
+
+}
+
+function cadastrar_gen(){
+
+    var nome = input_nome.value;
+    var telefone = input_telefone.value;
+    var email = input_email.value;
+
+    if(nome == '' || telefone == '' || email == ''){
+
+
+        alert('Preencha todos os campos para continuar');
+
+    }else if(!email.includes('@')){
+
+        alert('Email precisa conter @...');
+
+    }else{
+
+        
+          fetch("/gerente/cadastrar_gen", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nome: nome,
+          email: email,
+          telefone: telefone
+          
+      }),
+  });
+
+  alert('Usuário cadastrado com sucesso');
+   input_nome.value = '';
+   input_telefone.value = '';
+    input_email.value = '';
+
+  
+  return false;
+
+    
+    }
+
+    }
+
+    
+
+    function listar(){
+
+        div_dados.innerHTML = ``
+
+        var id = sessionStorage.ID_USUARIO;
+
+          fetch(`/gerente/listar/${id}`, {
+            method: "GET"
+        })
+            .then(res => res.json())
+            .then(list => {
+         
+                list.forEach(list => {
+                        
+                    div_dados.innerHTML = `<div id="dado"> <span style="margin-right: 5%;">${list.nome}</span> <span >${list.email}</span> <span>${list.telefone}</span> <button id="${list.idusuario}" onclick="deletar(this)"  class="btn_del"></button></div>`
+                     
+
+                });
+              
+            })
+            .catch(erro => {
+                console.error("Erro ao carregar o histórico:", erro);
+            });
+
+
+
+    
+}
+</script>

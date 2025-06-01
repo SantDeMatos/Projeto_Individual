@@ -1,4 +1,4 @@
-var database = require("../database/config")
+ var database = require("../database/config")
 
 
 function kpi(){
@@ -107,7 +107,60 @@ function dados_graf3(){
 
 
 
+function cadastrar_gen(nome,email,telefone){
 
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+    insert into usuario values (default, '${nome}', '${email}', '${telefone}', 'gerenteMt@', 'Gerente');
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+
+function deletar(id){
+
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+   delete from usuario where idusuario = ${id};
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+
+
+
+
+
+
+function listar(id){
+
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+     select * from usuario where idusuario != ${id} and cargo = 'Gerente' ;
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
 
 
 
@@ -120,5 +173,8 @@ module.exports = {
     kpi3,
     dados_graf,
     dados_graf2,
-    dados_graf3
+    dados_graf3,
+    cadastrar_gen,
+    listar,
+    deletar
 };

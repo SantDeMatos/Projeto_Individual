@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+*{
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+body{
+
+    display: flex;
+}
+
+
+.menu_bar{
+
+    background-color: #1A2435;
+    width: 7%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.div_logo{
+
+    background-image: url(../assets/icons/logoicon.png);
+    width: 60%;
+    height: 9vh;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 20%;
+}
+
+
+.nav_menu_links{
+
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20%;
+
+}
+
+.btn_home{
+
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+}
+
+.img_menu{
+
+  width: 35px;
+    height: 35px;
+
+}
+
+.btn_home:hover{
+
+    background-color: #B2892B;
+    transition: 0.4s ease-in-out;
+}
+
+.btn_h{
+
+     width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.barra{
+
+    width: 60%;
+    height: 3px;
+    background-color: white;
+    
+
+}
+
+.div_container{
+
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.div_form{
+
+    width: 35%;
+    height: 90vh;
+    background-color: #1A2435;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    color: white;
+    font-family: "Kantumruy Pro", sans-serif;
+    font-weight: bold;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.div_campos{
+
+    width: 70%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.h3_form{
+
+    font-size: 20px;
+     font-family: "Kantumruy Pro", sans-serif;
+    font-weight: bold;
+
+}
+
+#btn_add{
+
+    width: 50%;
+    height: 6vh;
+    border-radius: 20px;
+    border: none;
+    background-color: #B2892B;
+    font-size: 19px;
+    cursor: pointer;
+     font-family: "Kantumruy Pro", sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.inputs{
+
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-family: "Kantumruy Pro", sans-serif;
+    font-weight: bold;
+    text-align: center;
+    height: 5vh;
+}
+
+.div_list{
+
+    width: 50%;
+    height: 90vh;
+    background-color: #1A2435;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+     color: white;
+    font-family: "Kantumruy Pro", sans-serif;
+    font-weight: bold;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.div_cont{
+
+    width: 90%;
+    height: 75vh;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: solid 3px #B2892B;
+
+}
+
+.div_leg{
+
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 18px;
+    height: 7vh;
+    background-color: transparent;
+    border-bottom: solid 3px white;
+    display: flex;
+
+}
+
+#div_dados{
+
+    height: 68vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+
+}
+
+#dado{
+
+    min-width: 100%;
+     max-width: 100%;
+    min-height: 6vh;
+    max-height: 6vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: solid 3px #fff;
+}
+
+#dado span{
+
+    font-size: 14px;
+}
+
+
+.btn_del{
+
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    background-color: red;
+    background-position: center;
+    background-image: url(../assets/icons/delete.svg);
+    background-size: 95% 95%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+}

@@ -14,6 +14,19 @@ router.get("/kpi2", function (req, res) {
     gerenteController.kpi2(req, res);
 })
 
+router.post("/cadastrar_gen", function (req, res) {
+    gerenteController.cadastrar_gen(req, res);
+})
+
+router.post("/deletar", function (req, res) {
+    gerenteController.deletar(req, res);
+})
+
+
+router.get("/listar/:id", function (req, res) {
+    gerenteController.listar(req, res);
+})
+
 
 router.get("/kpi3", function (req, res) {
     gerenteController.kpi3(req, res);

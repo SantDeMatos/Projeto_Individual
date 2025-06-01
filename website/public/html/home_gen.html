@@ -164,6 +164,7 @@ var lista_qtdjog = [];
 var lista_clu = [];
 var lista_qtdclu = [];
 
+var qtdq = 0;
 
  window.onload = function () {
         kpi();
@@ -248,7 +249,7 @@ var lista_qtdclu = [];
                 kpi3.forEach(kpi3 => {
                         
                       qtdquiz.innerHTML = kpi3.qtdresp;
-
+                        qtdq = Number(kpi3.qtdresp);
                 });
               
             })
@@ -349,14 +350,14 @@ var lista_qtdclu = [];
 
         function graphic(){
 
-             Chart.defaults.font.size = "15px";
+             Chart.defaults.font.size = "13px";
                 Chart.defaults.font.weight = "bold";
                             Chart.defaults.color = '#fff';
 
 
-            var qtd1 = ((lista_qtd[0] / (lista_qtd[0] + (lista_qtd[1]) + (lista_qtd[2]))* 100));
-            var qtd2 = ((lista_qtd[1] / (lista_qtd[0] + (lista_qtd[1]) + (lista_qtd[2]))* 100));
-            var qtd3 = ((lista_qtd[2] / (lista_qtd[0] + (lista_qtd[1]) + (lista_qtd[2]))* 100));
+            var qtd1 = ((lista_qtd[0] / qtdq)* 100);
+            var qtd2 =  ((lista_qtd[1] / qtdq)* 100);
+            var qtd3 =  ((lista_qtd[2] / qtdq)* 100);
     
           var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {
@@ -365,7 +366,7 @@ var lista_qtdclu = [];
                 labels: [lista_posicao[0],lista_posicao[1],lista_posicao[2],],
                 datasets: [{
                 label: 'Porcentagem %',
-                data: [qtd1.toFixed(), qtd2.toFixed(),qtd3.toFixed()],
+                data: [qtd1.toFixed(1), qtd2.toFixed(1),qtd3.toFixed(1)],
                  backgroundColor: [
                   'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
@@ -380,7 +381,7 @@ var lista_qtdclu = [];
                   plugins: {
                 datalabels: {
                     font: {
-                        size: 20 // Alterar para o tamanho desejado
+                        size: 18 // Alterar para o tamanho desejado
                     },
                      formatter: (value) => {
                     // Exemplo: Exibir valor com dois decimais e a unidade "%"
@@ -485,9 +486,9 @@ function home(){
 }
 
 
-function usuario(){
+function usuarios(){
 
-    window.location = ''
+    window.location = 'gestao_gen.html'
 
 
 }
