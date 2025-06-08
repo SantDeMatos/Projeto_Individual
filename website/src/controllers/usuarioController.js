@@ -302,6 +302,73 @@ function favoritarjogador(req, res){
             );
     }
 
+    
+        
+        function del_clu(req, res){
+        
+            var id= req.body.id;
+            var idclube = req.body.idclube;
+           
+             if (id == undefined) {
+                res.status(400).send("Seu id está undefined");
+            } else if(idclube == undefined){
+                
+                 res.status(400).send("Seu idclube está undefined");
+
+            }else
+                // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+                usuarioModel.del_clu(id,idclube)
+                    .then(
+                        function (resultado) {
+                            res.json(resultado);
+                        }
+                    ).catch(
+                        function (erro) {
+                            console.log(erro);
+                            console.log(
+                                "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                                erro.sqlMessage
+                            );
+                            res.status(500).json(erro.sqlMessage);
+                        }
+                    );
+            }
+        
+        
+            
+        
+        function del_jog(req, res){
+        
+            var id= req.body.id;
+            var idjog = req.body.idjog;
+           
+             if (id == undefined) {
+                res.status(400).send("Seu id está undefined");
+            } else if(idjog == undefined){
+                
+                 res.status(400).send("Seu idclube está undefined");
+
+            }else
+                // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+                usuarioModel.del_jog(id,idjog)
+                    .then(
+                        function (resultado) {
+                            res.json(resultado);
+                        }
+                    ).catch(
+                        function (erro) {
+                            console.log(erro);
+                            console.log(
+                                "\nHouve um erro ao realizar a inserção do quiz! Erro: ",
+                                erro.sqlMessage
+                            );
+                            res.status(500).json(erro.sqlMessage);
+                        }
+                    );
+            }
+        
+        
+        
 
 
 module.exports = {
@@ -314,5 +381,7 @@ module.exports = {
     favoritarjogador,
     listar_jog,
     listar_clu,
-    dicas
+    dicas,
+    del_clu,
+    del_jog
 }

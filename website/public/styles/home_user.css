@@ -248,6 +248,30 @@ body{
     width: 23%;
 }
 
+
+.btn_desf{
+
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    align-self: flex-start;
+    margin-left: 6.5%;
+    position: fixed;
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+
+.img_fav{
+
+    width: 30px;
+    height: 30px;
+
+}
+
+
 .titulo_fund{
 
     background-color: #B2892B;

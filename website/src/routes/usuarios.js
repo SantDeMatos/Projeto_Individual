@@ -51,4 +51,14 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+
+router.post("/del_clu", function (req, res) {
+    usuarioController.del_clu(req, res);
+});
+
+
+router.post("/del_jog", function (req, res) {
+    usuarioController.del_jog(req, res);
+});
+
 module.exports = router;

@@ -10,7 +10,9 @@ use santsvolley;
 
 
 --
+select * from jogadores;
 
+insert into jogadores values (default, '')
 insert into jogadores values (default, 'Cachopa', 29, ' Volley Monza ', 'Atuando', '../assets/imgs/jogadores/cachopa.jpg');
 
 

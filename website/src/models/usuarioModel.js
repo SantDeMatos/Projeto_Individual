@@ -74,7 +74,7 @@ function listar_jog(id){
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-  select jog.nome, jog.clube, jog.foto from jogadores as jog join favoritar_jogador as fvj on fvj.fkjogadores = jog.idjogadores where fvj.fkusuario = ${id};`;
+  select jog.nome, fvj.fkjogadores, jog.clube, jog.foto from jogadores as jog join favoritar_jogador as fvj on fvj.fkjogadores = jog.idjogadores where fvj.fkusuario = ${id};`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 
@@ -88,7 +88,7 @@ function listar_clu(id){
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-  select clu.nome, clu.dtfund, clu.foto from clubes as clu join favoritar_clube as fvc on fvc.fkclube = clu.idclubes where fvc.fkusuario = ${id};`;
+  select clu.nome, fvc.fkclube, clu.dtfund, clu.foto from clubes as clu join favoritar_clube as fvc on fvc.fkclube = clu.idclubes where fvc.fkusuario = ${id};`;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 
@@ -146,6 +146,41 @@ function dicas(id){
 
 
 
+function del_clu(id,idclube){
+
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+  delete from favoritar_clube where fkusuario = ${id} and fkclube = ${idclube};
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+
+
+function del_jog(id,idjog){
+
+        console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente.");
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucaoSql = `
+  delete from favoritar_jogador where fkusuario = ${id} and fkjogadores = ${idjog};
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+
+
+}
+
+
 
 
 
@@ -160,5 +195,7 @@ module.exports = {
     favoritarjogador,
     listar_jog,
     listar_clu,
-    dicas
+    dicas,
+    del_clu,
+    del_jog
 };

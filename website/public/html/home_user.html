@@ -114,6 +114,7 @@
      listar_jog();
      listar_clu();
      dicas();
+   
     };
 
 function sair(){
@@ -154,17 +155,22 @@ function perfil(){
   function listar_jog(){
 
         var id = sessionStorage.ID_USUARIO;
-         div_favoritos.innerHTML = '';         
+
+            div_favoritos.innerHTML = '';         
+
 
            fetch(`/usuarios/listar_jog/${id}`, {
             method: "GET"
         })
             .then(res => res.json())
             .then(lista_jog => {
+
          
                 lista_jog.forEach(lista_jog => {
                         
                    div_favoritos.innerHTML += `<div class="div_card">
+
+                    <button onclick="del_jog(this)" class="btn_desf" id="${lista_jog.fkjogadores}"><img src="../assets/icons/estrela_des.svg" class="img_fav"></button>
 
                     <div class="div_img_card"><img class="img_div" src='${lista_jog.foto}'></div>
 
@@ -194,10 +200,15 @@ function perfil(){
         })
             .then(res => res.json())
             .then(lista_clu => {
+
+
          
                 lista_clu.forEach(lista_clu => {
                         
                    div_favoritos.innerHTML += `<div class="div_card">
+
+                     <button onclick="del_clu(this)" class="btn_desf" id="${lista_clu.fkclube}" ><img src="../assets/icons/estrela_des.svg" class="img_fav"></button>
+
 
                     <div class="div_img_card"><img class="img_div" src='${lista_clu.foto}'></div>
 
@@ -216,6 +227,49 @@ function perfil(){
 
     }
 
+    function del_clu(botao){
+
+        var iduser = sessionStorage.ID_USUARIO;
+
+          fetch("/usuarios/del_clu", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          idclube: botao.id,
+          id: iduser
+      }),
+  });
+
+  window.location.reload();
+  return false;
+
+    }
+
+    function del_jog(botao){
+
+          var iduser = sessionStorage.ID_USUARIO;
+
+          fetch("/usuarios/del_jog", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          idjog: botao.id,
+          id: iduser
+      }),
+  });
+
+  window.location.reload();
+  return false;
+
+    }
 
     
   function dicas(){
