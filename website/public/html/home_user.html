@@ -276,11 +276,6 @@ function perfil(){
 
         var id = sessionStorage.ID_USUARIO;
 
-               span_posicao.innerHTML = 'POSIÇÃO';  
-                div_text_pos.innerHTML = '';
-                div_content_rotacao.innerHTML = '';  
-                div_content_fund.innerHTML = ''; 
-                div_img_text_pos.innerHTML = '' 
 
            fetch(`/usuarios/dicas/${id}`, {
             method: "GET"
@@ -296,23 +291,69 @@ function perfil(){
                   if(posicao == 'Ponteiro'){
 
                      span_posicao.innerHTML = 'PONTEIRO';  
-                     div_text_pos.innerHTML = 'Faça o quiz para obter mais dicas';
-                    div_content_rotacao.innerHTML = '';  
-                    div_content_fund.innerHTML = '';  
+                    div_text_pos.innerHTML = `<li>O Ponteiro (ou atacante de ponta) é um jogador versátil que assume a função de atacar a bola, defender e, em alguns casos, receber o saque adversário. É considerado uma posição crucial, exigindo habilidades básicas de passe, recepção e ataque. </li> <br>
+                    
+                    <span style="color: gold;">CARACTERÍSTICAS DE UM PONTEIRO:</span>
+                    <br>
+                    
+                    <li>Ataque e Defesa</li>
+                    <li>Recepção de Saque</li>
+                    <li>Mobilidade e Agilidade</li>
+                     <li>Técnica de Ataque</li>`;
 
+                    div_img_text_pos.innerHTML = `<div class="img_pos_pon"></div><span>Ricardo Lucarelli<br>Jtekt Stings</span>` ;
+  
+                    div_content_rotacao.innerHTML = `<span class="span_rotacao">No sistema de rotação 5x1 do voleibol, o levantador está sempre no fundo da quadra, formando a base para o ataque e a defesa. A rotação acontece em cada ponto marcado após o saque adversário, e o levantador acompanha a movimentação do time, estando sempre no fundo.  
+                        </span> <div class="img_rotacao"></div> `;  
+                    div_content_fund.innerHTML = `<li>Recepção de Saque: O ponteiro deve ser habilidoso em ambos os aspectos do jogo, tanto no ataque, como na defesa.  </li>
+                    <li>Defesa: Um ponteiro de qualidade deve ser capaz de receber a bola com precisão e segurança, permitindo uma boa construção de jogadas. </li>
+                    
+                 
+                   `;  
                   }else if( posicao == 'Oposto'){
 
                      span_posicao.innerHTML = 'OPOSTO';  
-                     div_text_pos.innerHTML = 'Faça o quiz para obter mais dicas';
-                    div_content_rotacao.innerHTML = '';  
-                    div_content_fund.innerHTML = '';  
+                    div_text_pos.innerHTML = `<li>O Oposto é um atacante com a função principal de finalizar o jogo com ataques potentes e precisos, geralmente na diagonal do levantador. É um jogador versátil que também auxilia na defesa e no bloqueio.</li> <br>
+                    
+                    <span style="color: gold;">CARACTERÍSTICAS DE UM OPOSTO:</span>
+                    <br>
+                    
+                    <li>Ataque</li>
+                    <li>Força e Precisão</li>
+                    <li>Equilíbrio Emocional</li>
+                     <li>Versatilidade</li>`;
 
+                    div_img_text_pos.innerHTML = `<div class="img_pos_opo"></div><span>Rosamaria Montibeller <br>Denso Airybees</span>` ;
+  
+                    div_content_rotacao.innerHTML = `<span class="span_rotacao">No sistema de rotação 5x1 do voleibol, o levantador está sempre no fundo da quadra, formando a base para o ataque e a defesa. A rotação acontece em cada ponto marcado após o saque adversário, e o levantador acompanha a movimentação do time, estando sempre no fundo.  
+                        </span> <div class="img_rotacao"></div> `;  
+                    div_content_fund.innerHTML = `<li>Ataque: É o principal atacante da equipe, com foco em finalizar pontos podendo atacar tanto na rede quanto no fundo da quadra </li>
+                    <li>Equilíbrio emocional: A capacidade de manter o controle emocional em momentos de pressão é fundamental para o oposto.  </li>
+                    
+                 
+                   `;  
                   }else if( posicao == 'Levantador'){
 
                      span_posicao.innerHTML = 'LEVANTADOR';  
-                    div_content_rotacao.innerHTML = ''; 
-                    div_text_pos.innerHTML = 'Faça o quiz para obter mais dicas';   
-                    div_content_fund.innerHTML = '';  
+                    div_text_pos.innerHTML = `<li>O líbero é uma posição especializada na defesa, atuando no fundo da quadra. Ele é o principal recebedor de saques e a segunda linha de defesa contra ataques, com a missão de manter a bola em jogo. O líbero não pode sacar, atacar ou bloquear.</li> <br>
+                    
+                    <span style="color: gold;">CARACTERÍSTICAS DE UM LEVANTADOR:</span>
+                    <br>
+                    
+                    <li>Habilidade Técnica</li>
+                    <li>Leitura de Jogo</li>
+                    <li>Inteligência Tática</li>
+                     <li>Aptidão Física</li>`;
+
+                    div_img_text_pos.innerHTML = `<div class="img_pos_lev"></div><span>Macris Carneiro <br>Praia Clube</span>` ;
+  
+                    div_content_rotacao.innerHTML = `<span class="span_rotacao">No sistema de rotação 5x1 do voleibol, o levantador está sempre no fundo da quadra, formando a base para o ataque e a defesa. A rotação acontece em cada ponto marcado após o saque adversário, e o levantador acompanha a movimentação do time, estando sempre no fundo.  
+                        </span> <div class="img_rotacao"></div> `;  
+                    div_content_fund.innerHTML = `<li>Habilidade Técnica: O levantador deve dominar a técnica de levantamento, seja com a parte superior do corpo (levantamento por cima) ou com a parte inferior (levantamento por baixo), para garantir a precisão e o controle da bola.  </li>
+                    <li>Comunicação: A comunicação clara e eficiente com os companheiros de equipe é essencial para coordenar as jogadas e garantir a eficácia ofensiva.  </li>
+                    
+                 
+                   `;  
 
                   }else if(posicao == 'Líbero'){
 
@@ -340,20 +381,29 @@ function perfil(){
 
                   }else if(posicao ==  'Central'){
 
-                    span_posicao.innerHTML = 'CENTRAL';  
-                     div_text_pos.innerHTML = 'Faça o quiz para obter mais dicas';  
-                    div_content_rotacao.innerHTML = '';  
-                    div_content_fund.innerHTML = '';  
+                   span_posicao.innerHTML = 'CENTRAL';  
+                    div_text_pos.innerHTML = `<li>O central é um jogador que atua principalmente no meio da rede, com a função de bloquear ataques adversários e, simultaneamente, ser uma opção de ataque para o levantador. Além disso, o central é fundamental para a defesa da equipe, sendo um dos primeiros a defender contra os ataques rivais. </li> <br>
+                    
+                    <span style="color: gold;">CARACTERÍSTICAS DE UM CENTRAL:</span>
+                    <br>
+                    
+                    <li>Bloqueio Preciso</li>
+                    <li>Ataque Rápido</li>
+                    <li>Posicionamento Eficaz</li>
+                    <li>Alta Estatura</li>
+                    `;
 
-
-                  }else{
-
-                     div_content_posicao.innerHTML = 'Faça o quiz para obter mais dicas';  
-                    div_content_rotacao.innerHTML = '';  
-                    div_content_fund.innerHTML = '';  
+                    div_img_text_pos.innerHTML = `<div class="img_pos_cen"></div><span>Lucas Saatkamp <br>Sada Cruzeiro</span>` ;
+  
+                    div_content_rotacao.innerHTML = `<span class="span_rotacao">No sistema de rotação 5x1 do voleibol, o levantador está sempre no fundo da quadra, formando a base para o ataque e a defesa. A rotação acontece em cada ponto marcado após o saque adversário, e o levantador acompanha a movimentação do time, estando sempre no fundo.  
+                        </span> <div class="img_rotacao"></div> `;  
+                    div_content_fund.innerHTML = `<li>Bloqueio Preciso: O bloqueio é a principal função do central, que busca impedir ou dificultar os ataques adversários, especialmente aqueles que vêm do meio da rede. </li>
+                    <li>Ataque Rápido:  o central também atua como uma opção de ataque, com o levantador podendo lançar a bola para que ele ataque no meio da rede normalmente com um levantamento mais rápido. </li>
+                    
+                 
+                   `;  
 
                   }
-
 
                 });
               

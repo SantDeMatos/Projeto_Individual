@@ -341,6 +341,7 @@ font-size: 14px;
 
 }
 
+
 .img_pos_lib{
 
     width: 90%;
@@ -350,6 +351,52 @@ font-size: 14px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
+
+
+.img_pos_opo{
+
+    width: 90%;
+    border-radius: 10px;
+    height: 40vh;
+    background-image: url(../assets/imgs/jogadores/rosamaria.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img_pos_lev{
+
+    width: 90%;
+    border-radius: 10px;
+    height: 40vh;
+    background-image: url(../assets/imgs/jogadores/Macris.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+.img_pos_cen{
+
+    width: 90%;
+    border-radius: 10px;
+    height: 40vh;
+    background-image: url(../assets/imgs/jogadores/lucao.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+
+
+
+.img_pos_pon{
+
+    width: 90%;
+    border-radius: 10px;
+    height: 40vh;
+    background-image: url(../assets/imgs/jogadores/lucarelli.webp);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 
 .div_rotacao{
 

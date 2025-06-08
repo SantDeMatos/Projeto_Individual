@@ -8,15 +8,6 @@ use santsvolley;
 
 -- Campo de testes
 
-
---
-select * from jogadores;
-
-insert into jogadores values (default, '')
-insert into jogadores values (default, 'Cachopa', 29, ' Volley Monza ', 'Atuando', '../assets/imgs/jogadores/cachopa.jpg');
-
-
-
 create table usuario(
 
 idusuario int primary key auto_increment,
@@ -28,8 +19,6 @@ cargo varchar(45) not null,
 constraint chkCheck check (cargo in('Normal','Gerente'))
 
 );
-
-insert into usuario values (default, 'Matheus', 'matheus@gmail.com', '96454-2424', 'matheussantana', 'Gerente');
 
 create table quiz(
 
@@ -89,9 +78,11 @@ constraint pkallcl primary key (idfavoritar_clube, fkclube, fkusuario)
 );
 
 
+insert into jogadores values (default, 'Cachopa', 29, ' Volley Monza ', 'Atuando', '../assets/imgs/jogadores/cachopa.jpg');
+insert into jogadores values (default, 'Bruninho', 38, 'Renata/Campinas', 'Atuando', '../assets/imgs/jogadores/bruninho.webp');
+insert into clubes values (default, 'Sesi Bauru', 'Superliga', '2005', '../assets/imgs/clubes/sesi.png');
+insert into usuario values (default, 'Matheus', 'matheus@gmail.com', '96454-2424', 'matheussantana', 'Gerente');
 
-
-
-
+truncate quiz;
 
 
