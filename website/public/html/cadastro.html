@@ -6,12 +6,13 @@
     <title>Cadastro</title>
     <link rel="stylesheet" href="../styles/cadastro.css">
     <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
-    <script src="../js/cadastro.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 </head>
 <body>
 
    
-    <div class="div_form">
+    <div id="div_form" class="div_form">
 
 
      <button class="btn_voltar" onclick="voltar()"><img src="../assets/icons/seta_esquerda.svg" class="img_btn"></button>
@@ -58,17 +59,33 @@
       
     </div>
 
-     <div class="div_img_login">
+     <div class="div_img_login" id="img_login">
 
 
     </div>
 
 
+      <div class="div_erro" id="div_erro">
+
+
+        <div class="img_erro" id="img_erro"></div>
+
+        <span style="font-size: 25px;  " id="span_tipo">Cadastro Inválido!</span>
+
+        <span style="font-size: 20px;" id="span_erro">Preencha todos os campos!</span>
+
+        <button class="btn_again" id="btn_again" onclick="tentar()">Tente Novamente</button>
+
+    </div>
 
 
     
 </body>
 </html>
+
+  <script type="text/javascript">
+                    $("#input_telefone").mask("00000-0000");
+                </script>
 
 <script>
 
@@ -78,12 +95,28 @@ function voltar(){
     window.location.href = '../index.html';
 }
 
+function tentar(){
+
+    div_erro.style.animation = 'sumir 0.5s ease-in-out forwards';
+      div_form.style.animation = 'backn 0.5s ease-in-out forwards'
+        img_login.style.animation = 'backn 0.5s ease-in-out forwards'
+
+}
+
+
 function cadastrar(){
 
 
        if(input_email.value == '' || input_senha.value == '' || input_nome.value == '' || input_telefone.value == ''){
 
-         alert('Preencha todos os campos para continuar'); 
+        div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Erro ao se cadastrar!';
+        span_erro.innerHTML = 'Preencha todos os campos para continuar!';
+        btn_again.innerHTML = 'Tentar novamente';
+         btn_again.style.backgroundColor = 'red';
+         div_form.style.animation = 'backop 0.5s ease-in-out forwards'
+        img_login.style.animation = 'backop 0.5s ease-in-out forwards'
+ 
 
     }else{
 
@@ -92,7 +125,7 @@ function cadastrar(){
         var nome = input_nome.value;
         var telefone = input_telefone.value;
 
-        if( email.includes('@') && senha.length >= 9 && telefone.length == 10){
+        if( email.includes('@') && senha.length >= 9){
 
             fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -129,9 +162,28 @@ function cadastrar(){
   return false;
 
 
-        }else{
+        }else if(!email.includes('@')){
 
-            alert('Email, senha ou número no formato errado! O email deve conter @, a senha deve conter no mínimo 9 caractéres e o número deve conter 10 caractéres incluindo -')
+             div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Erro ao se cadastrar!';
+        span_erro.innerHTML = 'Email deve conter "@"';
+        btn_again.innerHTML = 'Tentar novamente';
+         btn_again.style.backgroundColor = 'red';
+           div_form.style.animation = 'backop 0.5s ease-in-out forwards'
+        img_login.style.animation = 'backop 0.5s ease-in-out forwards'
+
+ 
+            
+        }else if(senha.length < 9){
+
+         div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Erro ao se cadastrar!';
+        span_erro.innerHTML = 'Senha deve conter mais de 8 caracteres!';
+        btn_again.innerHTML = 'Tentar novamente';
+         btn_again.style.backgroundColor = 'red';
+           div_form.style.animation = 'backop 0.5s ease-in-out forwards'
+        img_login.style.animation = 'backop 0.5s ease-in-out forwards'
+
             
         }
 

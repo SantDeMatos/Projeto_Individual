@@ -9,13 +9,15 @@
 </head>
 <body>
 
-    <div class="div_img_login">
+    
+
+    <div id="div_login" class="div_img_login">
 
         <button class="btn_voltar" onclick="voltar()"><img src="../assets/icons/seta_esquerda.svg" class="img_btn"></button>
 
     </div>
 
-    <div class="div_form">
+    <div class="div_form" id="div_form">
 
         <div class="txt_bem_vindo">
 
@@ -49,26 +51,59 @@
      
       
     </div>
+
     
-    <div class="div_aviso"  id='div_aviso' style="display: none;"></div>
+      <div class="div_erro" id="div_erro">
+
+
+        <div class="img_erro" id="img_erro"></div>
+
+        <span style="font-size: 25px;  " id="span_tipo">Cadastro Inválido!</span>
+
+        <span style="font-size: 20px;" id="span_erro">Preencha todos os campos!</span>
+
+        <button class="btn_again" id="btn_again" onclick="tentar()">Tente Novamente</button>
+
+    </div>
+
+
+
+    
 </body>
 </html>
 
 <script>
 
-const comp = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 function voltar(){
 
     window.location.href = '../index.html';
 }
 
+
+function tentar(){
+
+    div_erro.style.animation = 'sumir 0.5s ease-in-out forwards';
+      div_form.style.animation = 'backn 0.5s ease-in-out forwards'
+        div_login.style.animation = 'backn 0.5s ease-in-out forwards'
+        div_erro.style.zIndex = '-1';
+
+}
    
 function login(){
 
     if(input_email.value == '' || input_senha.value == ''){
 
-         alert('Preencha todos os campos para continuar'); 
+        
+          div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Erro ao se cadastrar!';
+        span_erro.innerHTML = 'Preencha todos os campos para continuar!';
+        btn_again.innerHTML = 'Tentar novamente';
+         btn_again.style.backgroundColor = 'red';
+         div_login.style.animation = 'backop 0.5s ease-in-out forwards';
+        div_form.style.animation = 'backop 0.5s ease-in-out forwards';
+                div_erro.style.zIndex = '15000';
+
 
     }else{
 
