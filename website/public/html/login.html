@@ -162,6 +162,14 @@ function login(){
 
         } else {
 
+                div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+                span_tipo.innerHTML = 'Erro ao realizar o login!';
+                span_erro.innerHTML = 'Email ou senha incorretas!';
+                btn_again.innerHTML = 'Tentar novamente';
+                btn_again.style.backgroundColor = 'red';
+                div_login.style.animation = 'backop 0.5s ease-in-out forwards';
+                div_form.style.animation = 'backop 0.5s ease-in-out forwards';
+                div_erro.style.zIndex = '15000';
             console.log("Houve um erro ao tentar realizar o login!");
 
             resposta.text().then(texto => {
@@ -176,10 +184,32 @@ function login(){
 
     return false;
 
-        }else{
+        }else if(!email.includes('@')){
 
-            alert('Email ou senha no formato errado! O email deve conter @ e a senha deve conter no mínimo 9 caractéres!')
+                div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+                span_tipo.innerHTML = 'Erro ao realizar o login!';
+                span_erro.innerHTML = 'O email deve conter @!';
+                btn_again.innerHTML = 'Tentar novamente';
+                btn_again.style.backgroundColor = 'red';
+                div_login.style.animation = 'backop 0.5s ease-in-out forwards';
+                div_form.style.animation = 'backop 0.5s ease-in-out forwards';
+                div_erro.style.zIndex = '15000';
+
             
+        }else if( senha.length < 9){
+
+             div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+                span_tipo.innerHTML = 'Erro ao realizar o login!';
+                span_erro.innerHTML = 'A senha deve conter no mínimo 9 caracteres';
+                btn_again.innerHTML = 'Tentar novamente';
+                btn_again.style.backgroundColor = 'red';
+                div_login.style.animation = 'backop 0.5s ease-in-out forwards';
+                div_form.style.animation = 'backop 0.5s ease-in-out forwards';
+                div_erro.style.zIndex = '15000';
+
+            
+
+
         }
 
 

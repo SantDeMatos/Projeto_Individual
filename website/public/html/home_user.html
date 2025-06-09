@@ -46,6 +46,7 @@
 
        <div class="dicas_text">  
             <span class="span_dicas">DICAS</span>
+            
         </div>
       
         <div class="div_favoritos" id="div_favoritos"> 
@@ -103,6 +104,14 @@
 
            </div>
 
+    </div>
+
+    
+      <div class="div_erro" id="div_erro">
+
+        <span style="font-size: 18px;" id="span_tipo">Cadastro Inválido!</span>
+
+    
     </div>
 
 </body>
@@ -244,8 +253,14 @@ function perfil(){
       }),
   });
 
-  window.location.reload();
-  return false;
+        div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Clube removido com sucesso!';
+        div_erro.style.zIndex = '15000';
+
+        setTimeout(sumir,1000);
+        setTimeout(reiniciar,2000);
+
+   return false;
 
     }
 
@@ -266,8 +281,29 @@ function perfil(){
       }),
   });
 
-  window.location.reload();
+
+       div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Jogador removido com sucesso!';
+        div_erro.style.zIndex = '15000';
+
+        setTimeout(sumir,1000);
+        setTimeout(reiniciar,2000);
   return false;
+
+}
+
+function sumir(){
+
+     div_erro.style.animation = 'sumir 1s ease-in-out forwards';
+        div_erro.style.zIndex = '0';
+
+
+}
+
+    function reiniciar(){
+
+          window.location.reload();
+
 
     }
 
@@ -283,10 +319,11 @@ function perfil(){
             .then(res => res.json())
             .then(dicas => {
          
-               
+
                 dicas.forEach(dicas => {
                         
                   var posicao = dicas.posicao;
+                  
 
                   if(posicao == 'Ponteiro'){
 

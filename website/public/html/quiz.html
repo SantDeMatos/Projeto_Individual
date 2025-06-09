@@ -281,6 +281,10 @@ function comecar(){
     }
 
 
+    function reiniciar(){
+
+        window.location.reload();
+    }
 
 
 function resposta(botao){
@@ -302,6 +306,13 @@ function resposta(botao){
             }
         }
 
+                div_resultado.style.display = 'flex';
+
+             div_resultado.style.animation = 'surgir 0.5s ease-in-out forwards';
+                     div_resultado.style.zIndex = '10000';
+
+
+
         div_resultado.innerHTML = `<h1 class="h1_res">RESULTADO</h1>
 
         <span id="acertos">${acertos}/10</span>
@@ -309,10 +320,11 @@ function resposta(botao){
 
         <span>Você pode refazer o quiz quantas vezes desejar</span>
 
+        <button class="restart" onclick="reiniciar()">Reiniciar</button>
+
         <span id="posicao">Posição de interesse: <span style="color: #1A2435">${lista_usuario[10]}</span></span>
         `;
 
-        div_resultado.style.display = 'flex';
 
       
         var posicao = lista_usuario[10];
