@@ -254,3 +254,105 @@ body{
     cursor: pointer;
 
 }
+
+
+
+
+.btn_again{
+
+    background-color: red;
+    width: 50%;
+    height: 7vh;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor:pointer;
+    transition: 0.2s ease-in-out;
+    text-align: center;
+
+}
+
+
+.div_erro{
+
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 25%;
+    background-color: #fff;
+    border: solid 3px #1A2435;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 6px rgba(14, 14, 17, 0.2);
+    transform: translate(-50%,-50%);
+    left: 50%;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    font-weight: bold;
+    justify-content: space-evenly;
+    opacity: 0;
+    font-family: "Kantumruy Pro", sans-serif;
+    z-index: 1000;
+}
+
+.div_erro span{
+
+
+    color: #1A2435;
+}
+
+@keyframes surgir{
+
+    from{
+
+        opacity: 0%;
+    }
+
+    to{
+
+        opacity: 100%;
+    }
+
+}
+
+@keyframes sumir{
+
+    from{
+
+        opacity: 100%;
+    }
+
+    to{
+
+        opacity: 0%;
+    }
+
+    
+
+
+}
+
+
+.img_erro{
+
+    width: 80%;
+    height: 32vh;
+    background-image: url(../assets/imgs/error.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;    
+}
+
+
+.img_corre{
+
+    width: 80%;
+    height: 32vh;
+    background-image: url(../assets/imgs/correct.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;    
+}

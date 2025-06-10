@@ -190,12 +190,24 @@ body{
 
 .div_img_sant{
 
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     margin-left: 5%;
     width: 45%;
     margin-top: 2%;
-    height: 75vh;
-    background-image: url(../assets/imgs/logosobre.png);
+    height: 70vh;
+    background-image: url(../assets/imgs/logo.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
+
+}
+
+.div_img_sant{
+
+       color: #B2892B;
+    font-family: "Kantumruy Pro", sans-serif;
+    font-weight: bold;
+    font-size: 42px;
 
 }

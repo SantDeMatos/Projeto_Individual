@@ -88,7 +88,7 @@
 
                 </div>
 
-                 <div class="div_fund">
+                 <div class="div_fund" >
 
                          <div class="titulo_fund"> <span>FUNDAMENTOS ESSENCIAIS</span></div>
 
@@ -177,11 +177,10 @@ function perfil(){
          
                 lista_jog.forEach(lista_jog => {
                         
-                   div_favoritos.innerHTML += `<div class="div_card">
+                   div_favoritos.innerHTML += `<div class="div_card" style="background-image: url(${lista_jog.foto});">
 
                     <button onclick="del_jog(this)" class="btn_desf" id="${lista_jog.fkjogadores}"><img src="../assets/icons/estrela_des.svg" class="img_fav"></button>
 
-                    <div class="div_img_card"><img class="img_div" src='${lista_jog.foto}'></div>
 
                     <span class="span_texto_card">${lista_jog.nome} <br> ${lista_jog.clube}</span>
 
@@ -214,12 +213,10 @@ function perfil(){
          
                 lista_clu.forEach(lista_clu => {
                         
-                   div_favoritos.innerHTML += `<div class="div_card">
+                   div_favoritos.innerHTML += `<div class="div_card" style="background-image: url(${lista_clu.foto});">
 
-                     <button onclick="del_clu(this)" class="btn_desf" id="${lista_clu.fkclube}" ><img src="../assets/icons/estrela_des.svg" class="img_fav"></button>
+                    <button onclick="del_clu(this)" class="btn_desf" id="${lista_clu.fkclube}"><img src="../assets/icons/estrela_des.svg" class="img_fav"></button>
 
-
-                    <div class="div_img_card"><img class="img_div" src='${lista_clu.foto}'></div>
 
                     <span class="span_texto_card">${lista_clu.nome} <br> ${lista_clu.dtfund}</span>
 

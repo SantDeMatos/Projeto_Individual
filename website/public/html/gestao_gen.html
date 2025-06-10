@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/icons/logoicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/gestao_gen.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <title>Gestão de Usuários</title>
 </head>
 <body>
@@ -94,8 +96,27 @@
 
     </div>
 
+     <div class="div_erro" id="div_erro">
+
+
+        <div class="img_erro" id="img_erro"></div>
+
+        <span style="font-size: 25px;  " id="span_tipo">Cadastro Inválido!</span>
+
+        <span style="font-size: 20px;" id="span_erro">Preencha todos os campos!</span>
+
+        <button class="btn_again" id="btn_again" onclick="tentar()">Tente Novamente</button>
+
+    </div>
+
+
+
 </body>
 </html>
+
+  <script type="text/javascript">
+                    $("#input_telefone").mask("00000-0000");
+                </script>
 
 
 
@@ -151,8 +172,24 @@ function deletar(btn){
       }),
   });
   
-  window.location.reload()
+      div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Gerente excluido com Sucesso!';
+        span_erro.style.display= 'none'
+         btn_again.style.display = 'none';
+         img_erro.className = 'img_corre';
+                div_erro.style.zIndex = '15000';
+                setTimeout(sumir,1000);
+                  listar();
+
+
   return false;
+
+}
+
+function tentar(){
+
+    div_erro.style.animation = 'sumir 0.5s ease-in-out forwards';
+        div_erro.style.zIndex = '0';
 
 }
 
@@ -165,11 +202,21 @@ function cadastrar_gen(){
     if(nome == '' || telefone == '' || email == ''){
 
 
-        alert('Preencha todos os campos para continuar');
+          div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Erro ao cadastrar gerente!';
+        span_erro.innerHTML = 'Preencha todos os campos para continuar!';
+        btn_again.innerHTML = 'Tentar novamente';
+         btn_again.style.backgroundColor = 'red';
+                div_erro.style.zIndex = '15000';
 
     }else if(!email.includes('@')){
-
-        alert('Email precisa conter @...');
+        
+          div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Erro ao cadastrar gerente!';
+        span_erro.innerHTML = 'Email deve conter @!';
+        btn_again.innerHTML = 'Tentar novamente';
+         btn_again.style.backgroundColor = 'red';
+                div_erro.style.zIndex = '15000';
 
     }else{
 
@@ -189,10 +236,20 @@ function cadastrar_gen(){
       }),
   });
 
-  alert('Usuário cadastrado com sucesso');
-   input_nome.value = '';
-   input_telefone.value = '';
-    input_email.value = '';
+ 
+
+  
+          div_erro.style.animation = 'surgir 0.5s ease-in-out forwards';
+        span_tipo.innerHTML = 'Gerente cadastrado com Sucesso!';
+        span_erro.style.display= 'none'
+         btn_again.style.display = 'none';
+         img_erro.className = 'img_corre';
+                div_erro.style.zIndex = '15000';
+                setTimeout(sumir,1000);
+
+        input_nome.value = '';
+        input_telefone.value = '';
+            input_email.value = '';
 
   
   return false;
@@ -202,6 +259,13 @@ function cadastrar_gen(){
 
     }
 
+    function sumir(){
+
+
+            div_erro.style.animation = 'sumir 0.5s ease-in-out forwards';
+            listar();
+
+    }
     
 
     function listar(){
@@ -218,7 +282,7 @@ function cadastrar_gen(){
          
                 list.forEach(list => {
                         
-                    div_dados.innerHTML = `<div id="dado"> <span style="margin-right: 5%;">${list.nome}</span> <span >${list.email}</span> <span>${list.telefone}</span> <button id="${list.idusuario}" onclick="deletar(this)"  class="btn_del"></button></div>`
+                    div_dados.innerHTML += `<div id="dado"> <span style="margin-right: 5%;">${list.nome}</span> <span >${list.email}</span> <span>${list.telefone}</span> <button id="${list.idusuario}" onclick="deletar(this)"  class="btn_del"></button></div>`
                      
 
                 });

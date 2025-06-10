@@ -298,3 +298,69 @@ body{
     justify-content: center;
 
 }
+
+
+
+.div_erro{
+
+    display: flex;
+    flex-direction: column;
+    height:38vh;
+    width: 20%;
+    border: solid 3px #1A2435;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 6px rgba(14, 14, 17, 0.2);
+    transform: translate(-50%,-50%);
+    background-image: url(../assets/imgs/correct.gif);
+    background-size: 65% 60%;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 52%;
+    align-items: center;
+    text-align: center;
+    top: 45%;
+    font-weight: bold;
+    justify-content: flex-end;
+    opacity: 0;
+    font-family: "Kantumruy Pro", sans-serif;
+    z-index: -1;
+}
+
+.div_erro span{
+
+
+    color: #1A2435;
+}
+
+@keyframes surgir{
+
+    from{
+
+        opacity: 0%;
+    }
+
+    to{
+
+        opacity: 100%;
+    }
+
+}
+
+@keyframes sumir{
+
+    from{
+
+        opacity: 100%;
+    }
+
+    to{
+
+        opacity: 0%;
+    }
+
+    
+
+
+}

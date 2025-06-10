@@ -124,6 +124,7 @@ body{
 }
 
 
+
 .span_titulo{
 
     color: white;
@@ -139,7 +140,7 @@ body{
 .div_perguntas{
 
     width: 80%;
-    height: 75vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-self: center;
