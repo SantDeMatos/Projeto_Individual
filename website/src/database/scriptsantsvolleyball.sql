@@ -109,4 +109,3 @@ insert into clubes values (default, 'Sada Cruzeiro', 'Superliga', '2005', '../as
 (default, 'Modena Volley', 'Superliga da Itália', '1996', '../assets/imgs/clubes/modena.png'),
 (default, 'Osasco Voleibol', 'Superliga', '2009', '../assets/imgs/clubes/osasco.png');
 
-
