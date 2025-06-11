@@ -106,6 +106,8 @@
 
     </div>
 
+    <span class="fquiz" id="fquiz">Faça o quiz para obter dicas!</span>
+
     
       <div class="div_erro" id="div_erro">
 
@@ -321,9 +323,12 @@ function sumir(){
                         
                   var posicao = dicas.posicao;
                   
+                    fquiz.style.display = 'initial';
+
 
                   if(posicao == 'Ponteiro'){
 
+                    fquiz.style.display = 'none';
                      span_posicao.innerHTML = 'PONTEIRO';  
                     div_text_pos.innerHTML = `<li>O Ponteiro (ou atacante de ponta) é um jogador versátil que assume a função de atacar a bola, defender e, em alguns casos, receber o saque adversário. É considerado uma posição crucial, exigindo habilidades básicas de passe, recepção e ataque. </li> <br>
                     
@@ -345,6 +350,8 @@ function sumir(){
                  
                    `;  
                   }else if( posicao == 'Oposto'){
+
+                    fquiz.style.display = 'none';
 
                      span_posicao.innerHTML = 'OPOSTO';  
                     div_text_pos.innerHTML = `<li>O Oposto é um atacante com a função principal de finalizar o jogo com ataques potentes e precisos, geralmente na diagonal do levantador. É um jogador versátil que também auxilia na defesa e no bloqueio.</li> <br>
@@ -368,6 +375,8 @@ function sumir(){
                    `;  
                   }else if( posicao == 'Levantador'){
 
+                    fquiz.style.display = 'none';
+
                      span_posicao.innerHTML = 'LEVANTADOR';  
                     div_text_pos.innerHTML = `<li>O líbero é uma posição especializada na defesa, atuando no fundo da quadra. Ele é o principal recebedor de saques e a segunda linha de defesa contra ataques, com a missão de manter a bola em jogo. O líbero não pode sacar, atacar ou bloquear.</li> <br>
                     
@@ -390,6 +399,8 @@ function sumir(){
                    `;  
 
                   }else if(posicao == 'Líbero'){
+
+                    fquiz.style.display = 'none';
 
                      span_posicao.innerHTML = 'LÍBERO';  
                     div_text_pos.innerHTML = `<li>O líbero é uma posição especializada na defesa, atuando no fundo da quadra. Ele é o principal recebedor de saques e a segunda linha de defesa contra ataques, com a missão de manter a bola em jogo. O líbero não pode sacar, atacar ou bloquear.</li> <br>
@@ -415,6 +426,7 @@ function sumir(){
 
                   }else if(posicao ==  'Central'){
 
+                    fquiz.style.display = 'none';
                    span_posicao.innerHTML = 'CENTRAL';  
                     div_text_pos.innerHTML = `<li>O central é um jogador que atua principalmente no meio da rede, com a função de bloquear ataques adversários e, simultaneamente, ser uma opção de ataque para o levantador. Além disso, o central é fundamental para a defesa da equipe, sendo um dos primeiros a defender contra os ataques rivais. </li> <br>
                     

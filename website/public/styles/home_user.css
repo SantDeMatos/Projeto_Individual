@@ -631,3 +631,15 @@ font-size: 14px;
 
 }
 
+#fquiz{
+
+    color:white;
+    position: fixed;
+    font-family: "Kantumruy Pro", sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 28%;
+    margin-left: 19%;
+
+}
+
